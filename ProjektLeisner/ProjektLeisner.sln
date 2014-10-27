@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeisnerWCF", "LeisnerWCF\LeisnerWCF.csproj", "{3E261D36-28ED-45C6-9499-6CA92A3B4CFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{92B3516E-F64F-428B-AB5C-9BA6AB3A0EBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{412F96AA-8F16-4F42-8A83-4C04ECBB9F3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +17,14 @@ Global
 		{3E261D36-28ED-45C6-9499-6CA92A3B4CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E261D36-28ED-45C6-9499-6CA92A3B4CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E261D36-28ED-45C6-9499-6CA92A3B4CFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92B3516E-F64F-428B-AB5C-9BA6AB3A0EBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92B3516E-F64F-428B-AB5C-9BA6AB3A0EBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92B3516E-F64F-428B-AB5C-9BA6AB3A0EBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92B3516E-F64F-428B-AB5C-9BA6AB3A0EBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{412F96AA-8F16-4F42-8A83-4C04ECBB9F3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{412F96AA-8F16-4F42-8A83-4C04ECBB9F3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{412F96AA-8F16-4F42-8A83-4C04ECBB9F3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{412F96AA-8F16-4F42-8A83-4C04ECBB9F3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
