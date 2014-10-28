@@ -24,11 +24,11 @@ namespace LeisnerWCF.Model
         [DataMember]
         public bool PleaseContact { get; set; }
 
-        public Questionnaire(DateTime date, List<WetBed> wetBeds, List<ToiletVisit> toiletVisits, int motivation, string comment, bool pleaseContact)
+        public Questionnaire(DateTime date, int motivation, string comment, bool pleaseContact)
         {
             Date = date;
-            WetBeds = wetBeds;
-            ToiletVisits = toiletVisits;
+            //WetBeds = wetBeds;
+            //ToiletVisits = toiletVisits;
             Motivation = motivation;
             Comment = comment;
             PleaseContact = pleaseContact;
