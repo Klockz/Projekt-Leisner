@@ -13,12 +13,12 @@ namespace LeisnerWCF
     {
         public Customer GetCustomer(string email)
         {
-            throw new NotImplementedException();
+            return new Customer("Example", "ex@ex.com", 12345678, 1);
         }
 
         public bool SubmitQuestionnaire(Questionnaire questionnaire, Patient patient)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }
