@@ -13,7 +13,7 @@ namespace LeisnerWCF.DataAccess
 
         public List<Patient> GetPatientCustomerId(int Id)
         {
-            Patient patient = null;
+            List<Patient> patients = new List<Patient>();
 
             DbProviderFactory fac = DbProviderFactories.GetFactory("System.Data.SqlClient");
             
@@ -36,14 +36,16 @@ namespace LeisnerWCF.DataAccess
                     string name = (string)reader["Name"];
                     int age = (int)reader["Age"];
 
-                    patient = new Patient(name, age);
+                    Patient patient = new Patient(name, age);
+
                     patient.Id = id;
 
-                    patient.Questionnaires = new List<Questionnaire>;
+                    patient.Questionnaires = new List<Questionnaire>();
 
+                    patients.Add(patient);
                 }
             }
-        
+            return patients;
         }
     }
 }
