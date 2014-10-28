@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeisnerWCF", "LeisnerWCF\LeisnerWCF.csproj", "{3E261D36-28ED-45C6-9499-6CA92A3B4CFC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeisnerWebForm", "LeisnerWebForm\LeisnerWebForm.csproj", "{B95FB4A4-299B-4B51-B659-AE907A84CFAB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3E261D36-28ED-45C6-9499-6CA92A3B4CFC} = {3E261D36-28ED-45C6-9499-6CA92A3B4CFC}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

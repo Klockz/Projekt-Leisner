@@ -52,7 +52,7 @@
             </asp:TableRow>
         </asp:Table>
         <p />
-        <asp:Button CssClass="buttondefaultgreen" ID="createWetBedButton" runat="server" Text="Create WetBed Incident" />
+        <asp:Button CssClass="buttondefaultgreen" ID="createWetBedButton" runat="server" Text="Create WetBed Incident" OnClick="createWetBedButton_Click" />
         <p />
         <h2>Toilet visits:</h2>
         <asp:ListView ID="toiletVisitsListView" runat="server">
