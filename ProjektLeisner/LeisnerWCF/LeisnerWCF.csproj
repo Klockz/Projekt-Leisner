@@ -68,6 +68,7 @@
       <DependentUpon>BedwetterService.svc</DependentUpon>
     </Compile>
     <Compile Include="DataAccess\CustomerRepository.cs" />
+    <Compile Include="DataAccess\PatientRepository.cs" />
     <Compile Include="Enums\SpotSize.cs" />
     <Compile Include="IBedwetterService.cs" />
     <Compile Include="Model\Customer.cs" />
