@@ -6,14 +6,23 @@ using System.ServiceModel;
 using System.Text;
 
 using LeisnerWCF.Model;
+using LeisnerWCF.DataAccess;
 
 namespace LeisnerWCF
 {
     public class BedwetterService : IBedwetterService
     {
+        CustomerRepository customerRepo 
+        {
+            get
+            {
+                return new CustomerRepository();
+            }
+        }
+
         public Customer GetCustomer(string email)
         {
-            return new Customer("Example", "ex@ex.com", 12345678, 1);
+            return customerRepo.GetCustomerByEmail(email);
         }
 
         public bool SubmitQuestionnaire(Questionnaire questionnaire, Patient patient)

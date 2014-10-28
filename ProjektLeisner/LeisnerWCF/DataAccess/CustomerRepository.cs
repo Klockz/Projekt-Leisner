@@ -12,7 +12,7 @@ namespace LeisnerWCF.DataAccess
     public class CustomerRepository
     {
         // returns null if customer not found
-        Customer GetCustomerByEmail(string email)
+        public Customer GetCustomerByEmail(string email)
         {
             Customer customer = null;
 
