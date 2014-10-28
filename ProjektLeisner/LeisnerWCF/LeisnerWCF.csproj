@@ -60,6 +60,12 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\SpotSize.cs" />
+    <Compile Include="Model\Customer.cs" />
+    <Compile Include="Model\Patient.cs" />
+    <Compile Include="Model\Questionnaire.cs" />
+    <Compile Include="Model\ToiletVisit.cs" />
+    <Compile Include="Model\WetBed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
