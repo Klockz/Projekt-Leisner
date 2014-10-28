@@ -16,5 +16,11 @@ namespace LeisnerWCF.Model
         public SpotSize Size { get; set; }
         [DataMember]
         public DateTime Time { get; set; }
+
+        public WetBed(SpotSize size, DateTime time)
+        {
+            Size = size;
+            Time = time;
+        }
     }
 }

@@ -23,5 +23,15 @@ namespace LeisnerWCF.Model
         public string Comment { get; set; }
         [DataMember]
         public bool PleaseContact { get; set; }
+
+        public Questionnaire(DateTime date, List<WetBed> wetBeds, List<ToiletVisit> toiletVisits, int motivation, string comment, bool pleaseContact)
+        {
+            Date = date;
+            WetBeds = wetBeds;
+            ToiletVisits = toiletVisits;
+            Motivation = motivation;
+            Comment = comment;
+            PleaseContact = pleaseContact;
+        }
     }
 }

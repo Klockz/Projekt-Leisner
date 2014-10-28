@@ -13,5 +13,10 @@ namespace LeisnerWCF.Model
         public int Id { get; set; }
         [DataMember]
         public DateTime Time { get; set; }
+
+        public ToiletVisit(DateTime time)
+        {
+            Time = time;
+        }
     }
 }

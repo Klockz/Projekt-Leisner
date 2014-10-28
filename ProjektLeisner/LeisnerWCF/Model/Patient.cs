@@ -17,5 +17,12 @@ namespace LeisnerWCF.Model
         public int Age { get; set; }
         [DataMember]
         public List<Questionnaire> Questionnaires { get; set; }
+
+        public Patient(string name, int age, List<Questionnaire> questionnaires)
+        {
+            Name = name;
+            Age = age;
+            Questionnaires = questionnaires;
+        }
     }
 }
