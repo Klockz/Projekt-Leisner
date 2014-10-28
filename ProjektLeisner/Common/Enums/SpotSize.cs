@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Interfaces
+namespace Common.Enums
 {
-    interface IPeeSpot
+    public enum SpotSize
     {
-        int Size { get; set; }
+        XS, S, M, L, XL
     }
 }

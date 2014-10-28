@@ -9,5 +9,8 @@ namespace Common.Interfaces
     interface ICustomer
     {
         string Name { get; set; }
+        string Email { get; set; }
+        int CustomerNo { get; set; }
+        List<IPatient> Patients { get; set; }
     }
 }

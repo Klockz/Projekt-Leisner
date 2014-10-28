@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Common.Interfaces
 {
-    interface IReport
+    interface IPatient
     {
-        DateTime Date { get; set; }
-        List<IPeeSpot> PeeSpots { get; set; }
+        string Name { get; set; }
+        int Age { get; set; }
+        List<IQuestionnaire> Questionnaires { get; set; }
     }
 }
