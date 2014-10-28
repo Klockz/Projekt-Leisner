@@ -9,5 +9,10 @@ namespace LeisnerWCF.Model
     {
         public int Id { get; set; }
         public DateTime Time { get; set; }
+
+        public ToiletVisit(DateTime time)
+        {
+            Time = time;
+        }
     }
 }
