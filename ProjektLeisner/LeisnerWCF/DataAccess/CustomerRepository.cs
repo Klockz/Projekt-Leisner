@@ -16,10 +16,6 @@ namespace LeisnerWCF.DataAccess
         {
             Customer customer = null;
 
-            string providerName = System.Configuration.ConfigurationManager
-                .ConnectionStrings["LeisnerWCF.Properties.Settings.ConnectionString"]
-                .ProviderName;
-
             DbProviderFactory fac = DbProviderFactories.GetFactory(DbHelper.ProviderName);
             using (IDbConnection con = fac.CreateConnection())
             using (IDbCommand cmd = con.CreateCommand())
