@@ -20,6 +20,8 @@ namespace LeisnerWCF.DataAccess
             using (IDbConnection con = fac.CreateConnection())
             using (IDbCommand cmd = con.CreateCommand())
             {
+                cmd.CommandText = "SELECT * FROM Customer WHERE Email = @Email";
+
                 IDataParameter emailParam = cmd.CreateParameter();
                 cmd.Parameters.Add(emailParam);
                 emailParam.ParameterName = "@Email";
