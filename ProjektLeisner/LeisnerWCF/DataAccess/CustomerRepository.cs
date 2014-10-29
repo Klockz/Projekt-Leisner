@@ -44,6 +44,7 @@ namespace LeisnerWCF.DataAccess
                     
                     // TODO: Get patients
                     customer.Patients = new List<Patient>();
+                    
                 }
             }
 
