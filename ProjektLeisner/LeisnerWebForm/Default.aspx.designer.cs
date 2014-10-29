@@ -40,58 +40,49 @@ namespace LeisnerWebForm {
         protected global::System.Web.UI.WebControls.TextBox dateTextBox;
         
         /// <summary>
-        /// wetBedPanel control.
+        /// wetBedIncidentsPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel wetBedPanel;
+        protected global::System.Web.UI.WebControls.Panel wetBedIncidentsPanel;
         
         /// <summary>
-        /// createWetBedButton control.
+        /// addWetBedIncidentButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button createWetBedButton;
+        protected global::System.Web.UI.WebControls.Button addWetBedIncidentButton;
         
         /// <summary>
-        /// toiletVisitsListView control.
+        /// toiletVisitsPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView toiletVisitsListView;
+        protected global::System.Web.UI.WebControls.Panel toiletVisitsPanel;
         
         /// <summary>
-        /// TextBox1 control.
+        /// addToiletVisitButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Button addToiletVisitButton;
         
         /// <summary>
-        /// createToiletVisitButton control.
+        /// motivationDropDown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button createToiletVisitButton;
-        
-        /// <summary>
-        /// motivationTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox motivationTextBox;
+        protected global::System.Web.UI.WebControls.DropDownList motivationDropDown;
         
         /// <summary>
         /// commentTextBox control.

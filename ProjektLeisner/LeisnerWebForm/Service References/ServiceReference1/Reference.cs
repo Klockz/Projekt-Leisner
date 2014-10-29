@@ -35,7 +35,7 @@ namespace LeisnerWebForm.ServiceReference1 {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LeisnerWebForm.ServiceReference1.Patient[] PatientsField;
+        private System.Collections.Generic.List<LeisnerWebForm.ServiceReference1.Patient> PatientsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PhoneNoField;
@@ -103,7 +103,7 @@ namespace LeisnerWebForm.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public LeisnerWebForm.ServiceReference1.Patient[] Patients {
+        public System.Collections.Generic.List<LeisnerWebForm.ServiceReference1.Patient> Patients {
             get {
                 return this.PatientsField;
             }
@@ -157,7 +157,7 @@ namespace LeisnerWebForm.ServiceReference1 {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LeisnerWebForm.ServiceReference1.Questionnaire[] QuestionnairesField;
+        private System.Collections.Generic.List<LeisnerWebForm.ServiceReference1.Questionnaire> QuestionnairesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -209,7 +209,7 @@ namespace LeisnerWebForm.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public LeisnerWebForm.ServiceReference1.Questionnaire[] Questionnaires {
+        public System.Collections.Generic.List<LeisnerWebForm.ServiceReference1.Questionnaire> Questionnaires {
             get {
                 return this.QuestionnairesField;
             }
@@ -256,10 +256,10 @@ namespace LeisnerWebForm.ServiceReference1 {
         private bool PleaseContactField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LeisnerWebForm.ServiceReference1.ToiletVisit[] ToiletVisitsField;
+        private System.Collections.Generic.List<LeisnerWebForm.ServiceReference1.ToiletVisit> ToiletVisitsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LeisnerWebForm.ServiceReference1.WetBed[] WetBedsField;
+        private System.Collections.Generic.List<LeisnerWebForm.ServiceReference1.WetBed> WetBedsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -337,7 +337,7 @@ namespace LeisnerWebForm.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public LeisnerWebForm.ServiceReference1.ToiletVisit[] ToiletVisits {
+        public System.Collections.Generic.List<LeisnerWebForm.ServiceReference1.ToiletVisit> ToiletVisits {
             get {
                 return this.ToiletVisitsField;
             }
@@ -350,7 +350,7 @@ namespace LeisnerWebForm.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public LeisnerWebForm.ServiceReference1.WetBed[] WetBeds {
+        public System.Collections.Generic.List<LeisnerWebForm.ServiceReference1.WetBed> WetBeds {
             get {
                 return this.WetBedsField;
             }
