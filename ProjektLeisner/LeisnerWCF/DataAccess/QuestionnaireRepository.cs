@@ -11,7 +11,7 @@ namespace LeisnerWCF.DataAccess
 {
     public class QuestionnaireRepository
     {
-        public List<Questionnaire> GetQuestionnairesById(int patientId)
+        public List<Questionnaire> GetQuestionnairesByPatientId(int patientId)
         {
             List<Questionnaire> questionnaires = new List<Questionnaire>();
 
@@ -30,7 +30,7 @@ namespace LeisnerWCF.DataAccess
 
                 while (reader.Read())
                 {
-                    //int id = (int) reader["Id"];
+                    int id = (int) reader["Id"];
                     string comment = (string) reader["Comment"];
                     int motivation = (int) reader["Motivation"];
                     bool pleaseContact = (bool) reader["PleaseContact"];
@@ -43,14 +43,14 @@ namespace LeisnerWCF.DataAccess
                     questionnaire.WetBeds = new List<WetBed>();
                     questionnaires.Add(questionnaire);
 
-                    GetWetbedsById(id);
+                    GetWetbedsByQuestionnaireId(id);
                     GetToiletVisitsById(id);
                 }
             }
             return questionnaires;
         }
 
-        private List<WetBed> GetWetbedsById(int wetbedId)
+        private List<WetBed> GetWetbedsByQuestionnaireId(int questionnaireId)
         {
             List<WetBed> wetBeds = new List<WetBed>();
 
@@ -59,12 +59,12 @@ namespace LeisnerWCF.DataAccess
             using(IDbConnection con = fac.CreateConnection())
             using (IDbCommand cmd = con.CreateCommand())
             {
-                cmd.CommandText = "SELECT * FROM WetBed WHERE WetBed = @WetBedId";
+                cmd.CommandText = "SELECT * FROM WetBed WHERE Questionnaire = @QuestionnaireId";
 
                 IDataParameter idParam = cmd.CreateParameter();
                 cmd.Parameters.Add(idParam);
-                idParam.ParameterName = "@WetBedId";
-                idParam.Value = wetbedId;
+                idParam.ParameterName = "@QuestionnaireId";
+                idParam.Value = questionnaireId;
 
                 con.Open();
                 IDataReader reader = cmd.ExecuteReader();
@@ -75,14 +75,14 @@ namespace LeisnerWCF.DataAccess
                     DateTime time = (DateTime)reader["Time"];
                     SpotSize spotSize = (SpotSize)Enum.Parse(typeof(SpotSize), size);
                     WetBed wetBed = new WetBed(spotSize , time);
-                    wetBed.Id = Id;
+                    wetBed.Id = questionnaireId;
                     wetBeds.Add(wetBed);
                 }
             }
             return wetBeds;
         }
 
-        private List<ToiletVisit> GetToiletVisitsById (int id)
+        private List<ToiletVisit> GetToiletVisitsById(int questionnaireId)
         {
             List<ToiletVisit> toiletVisits = new List<ToiletVisit>();
 
@@ -91,12 +91,12 @@ namespace LeisnerWCF.DataAccess
             using(IDbConnection con = fac.CreateConnection())
             using (IDbCommand cmd = con.CreateCommand())
             {
-                cmd.CommandText = "SELECT * FROM ToiletVisit WHERE Id = @Id";
+                cmd.CommandText = "SELECT * FROM ToiletVisit WHERE Questionnaire = @QuestionnaireId";
                 
                 IDataParameter idParam = cmd.CreateParameter();
                 cmd.Parameters.Add(idParam);
-                idParam.ParameterName = "@Id";
-                idParam.Value = id;
+                idParam.ParameterName = "@QuestionnaireId";
+                idParam.Value = questionnaireId;
 
                 con.Open();
                 IDataReader reader = cmd.ExecuteReader();
@@ -105,7 +105,7 @@ namespace LeisnerWCF.DataAccess
                 {
                     DateTime time = (DateTime)reader["Time"];
                     ToiletVisit visit = new ToiletVisit(time);
-                    visit.Id = id;
+                    visit.Id = questionnaireId;
                     toiletVisits.Add(visit);
                 }
             }
