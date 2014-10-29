@@ -16,7 +16,23 @@ namespace LeisnerWCF
         {
             get
             {
-                return new CustomerRepository();
+                return new CustomerRepository(PatientRepo);
+            }
+        }
+
+        QuestionnaireRepository QuestionnaireRepo
+        {
+            get
+            {
+                return new QuestionnaireRepository();
+            }
+        }
+
+        PatientRepository PatientRepo
+        {
+            get
+            {
+                return new PatientRepository(QuestionnaireRepo);
             }
         }
 
@@ -27,7 +43,7 @@ namespace LeisnerWCF
 
         public bool SubmitQuestionnaire(Questionnaire questionnaire, Patient patient)
         {
-            return true;
+            return QuestionnaireRepo.InsertQuestionnaire(questionnaire, patient);
         }
     }
 }

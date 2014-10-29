@@ -11,6 +11,12 @@ namespace LeisnerWCF.DataAccess
 {
     public class CustomerRepository
     {
+        private PatientRepository patientRepo;
+
+        public CustomerRepository(PatientRepository patientRepo)
+        {
+            this.patientRepo = patientRepo;
+        }
         // returns null if customer not found
         public Customer GetCustomerByEmail(string email)
         {
@@ -43,8 +49,7 @@ namespace LeisnerWCF.DataAccess
                     customer.Id = id;
                     
                     // TODO: Get patients
-                    customer.Patients = new List<Patient>();
-                    
+                    customer.Patients = patientRepo.GetPatientsByCustomerId(id);
                 }
             }
 

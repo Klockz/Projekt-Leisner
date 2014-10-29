@@ -10,37 +10,44 @@ namespace LeisnerWCF.DataAccess
 {
     public class PatientRepository
     {
+        private QuestionnaireRepository questionnaireRepo;
 
-        public List<Patient> GetPatientsCustomerById(int Id)
+        public PatientRepository(QuestionnaireRepository questionnaireRepo)
+        {
+            this.questionnaireRepo = questionnaireRepo;
+        }
+
+        public List<Patient> GetPatientsByCustomerId(int customerId)
         {
             List<Patient> patients = new List<Patient>();
 
-            DbProviderFactory fac = DbProviderFactories.GetFactory("System.Data.SqlClient");
+            DbProviderFactory fac = DbProviderFactories.GetFactory(DbHelper.ProviderName);
             
             using(IDbConnection con = fac.CreateConnection())
             using (IDbCommand cmd = con.CreateCommand())
             {
-                cmd.CommandText = "SELECT * FROM Patient WHERE Id = @Id";
+                con.ConnectionString = DbHelper.ConnectionString;
+
+                cmd.CommandText = "SELECT * FROM Patient WHERE Customer = @CustomerId";
 
                 IDataParameter idParam = cmd.CreateParameter();
                 cmd.Parameters.Add(idParam);
-                idParam.ParameterName = "@Id";
-                idParam.Value = Id;
+                idParam.ParameterName = "@CustomerId";
+                idParam.Value = customerId;
 
                 con.Open();
                 IDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
+                    int id = (int)reader["Id"];
                     string name = (string)reader["Name"];
                     int age = (int)reader["Age"];
 
                     Patient patient = new Patient(name, age);
+                    patient.Id = id;
 
-                    patient.Id = Id;
-
-                    patient.Questionnaires = new List<Questionnaire>();
-
+                    patient.Questionnaires = questionnaireRepo.GetQuestionnairesByPatientId(id);
                     patients.Add(patient);
                 }
             }
