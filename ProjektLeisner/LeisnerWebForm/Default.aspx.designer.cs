@@ -40,31 +40,13 @@ namespace LeisnerWebForm {
         protected global::System.Web.UI.WebControls.TextBox dateTextBox;
         
         /// <summary>
-        /// WetBedListView control.
+        /// wetBedPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView WetBedListView;
-        
-        /// <summary>
-        /// timeTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox timeTextBox;
-        
-        /// <summary>
-        /// sizeTextBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox sizeTextBox;
+        protected global::System.Web.UI.WebControls.Panel wetBedPanel;
         
         /// <summary>
         /// createWetBedButton control.

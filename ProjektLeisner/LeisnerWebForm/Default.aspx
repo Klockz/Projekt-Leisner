@@ -23,25 +23,8 @@
         </asp:Table>
         <p />
         <h2>WetBed incidents:</h2>
-        <asp:ListView ID="WetBedListView" runat="server">
-            <LayoutTemplate>
-                <table>
-                    <tr>
-                        <th>Time</th>
-                        <th>Size</th>
-                    </tr>
-                    <tr id="itemPlaceHolder" runat="server" />
-                 </table>
-            </LayoutTemplate>
-            <ItemTemplate>
-                <tr>
-                    <td><asp:Label runat="server"><%#Eval("Time") %></asp:Label></td>
-                    <td><asp:Label runat="server"><%#Eval("Size") %></asp:Label></td>
-                </tr>
-            </ItemTemplate>
-        </asp:ListView>
         <p />
-        <asp:Table runat="server">
+<%--        <asp:Table runat="server">
             <asp:TableRow>
                 <asp:TableCell>Time:</asp:TableCell>
                 <asp:TableCell><asp:TextBox ID="timeTextBox" runat="server"/></asp:TableCell>
@@ -50,7 +33,8 @@
                 <asp:TableCell>Spot Size:</asp:TableCell>
                 <asp:TableCell><asp:TextBox ID="sizeTextBox" runat="server"/></asp:TableCell>
             </asp:TableRow>
-        </asp:Table>
+        </asp:Table>--%>
+        <asp:Panel ID="wetBedPanel" runat="server" />
         <p />
         <asp:Button CssClass="buttondefaultgreen" ID="createWetBedButton" runat="server" Text="Create WetBed Incident" OnClick="createWetBedButton_Click" />
         <p />
