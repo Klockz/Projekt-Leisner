@@ -22,14 +22,14 @@ namespace LeisnerWCF.DataAccess
                 IDataParameter patientParam = cmd.CreateParameter();
                 cmd.Parameters.Add(patientParam);
                 patientParam.ParameterName = "@Id";
-                patientParam.Value = patient;
+                patientParam.Value = id;
 
                 con.Open();
                 IDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    int id = (int) reader["Id"];
+                    //int id = (int) reader["Id"];
                     string comment = (string) reader["Comment"];
                     int motivation = (int) reader["Motivation"];
                     bool pleaseContact = (bool) reader["PleaseContact"];
