@@ -11,7 +11,7 @@ namespace LeisnerWCF.DataAccess
     public class PatientRepository
     {
 
-        public List<Patient> GetPatientsCustomerById(int Id)
+        public List<Patient> GetPatientsByCustomerId(int customerId)
         {
             List<Patient> patients = new List<Patient>();
 
@@ -20,12 +20,12 @@ namespace LeisnerWCF.DataAccess
             using(IDbConnection con = fac.CreateConnection())
             using (IDbCommand cmd = con.CreateCommand())
             {
-                cmd.CommandText = "SELECT * FROM Patient WHERE Id = @Id";
+                cmd.CommandText = "SELECT * FROM Patient WHERE Customer = @CustomerId";
 
                 IDataParameter idParam = cmd.CreateParameter();
                 cmd.Parameters.Add(idParam);
-                idParam.ParameterName = "@Id";
-                idParam.Value = Id;
+                idParam.ParameterName = "@CustomerId";
+                idParam.Value = customerId;
 
                 con.Open();
                 IDataReader reader = cmd.ExecuteReader();
@@ -36,11 +36,9 @@ namespace LeisnerWCF.DataAccess
                     int age = (int)reader["Age"];
 
                     Patient patient = new Patient(name, age);
-
-                    patient.Id = Id;
+                    patient.Id = customerId;
 
                     patient.Questionnaires = new List<Questionnaire>();
-
                     patients.Add(patient);
                 }
             }
