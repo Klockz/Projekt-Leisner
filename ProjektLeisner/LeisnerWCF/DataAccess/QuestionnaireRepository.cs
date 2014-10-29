@@ -11,7 +11,7 @@ namespace LeisnerWCF.DataAccess
 {
     public class QuestionnaireRepository
     {
-        public List<Questionnaire> GetQuestionnairesById(int id)
+        public List<Questionnaire> GetQuestionnairesById(int patientId)
         {
             List<Questionnaire> questionnaires = new List<Questionnaire>();
 
@@ -19,12 +19,11 @@ namespace LeisnerWCF.DataAccess
             using (IDbConnection con = fac.CreateConnection())
             using (IDbCommand cmd = con.CreateCommand())
             {
-                cmd.CommandText = "SELECT * FROM Questionnaire WHERE PatientId = @Patient";
-
+                cmd.CommandText = "SELECT * FROM Questionnaire WHERE Patient = @PatientId";
                 IDataParameter patientParam = cmd.CreateParameter();
                 cmd.Parameters.Add(patientParam);
-                patientParam.ParameterName = "@Patient";
-                patientParam.Value = id;
+                patientParam.ParameterName = "@PatientId";
+                patientParam.Value = patientId;
 
                 con.Open();
                 IDataReader reader = cmd.ExecuteReader();
@@ -51,7 +50,7 @@ namespace LeisnerWCF.DataAccess
             return questionnaires;
         }
 
-        private List<WetBed> GetWetbedsById(int Id)
+        private List<WetBed> GetWetbedsById(int wetbedId)
         {
             List<WetBed> wetBeds = new List<WetBed>();
 
@@ -60,12 +59,12 @@ namespace LeisnerWCF.DataAccess
             using(IDbConnection con = fac.CreateConnection())
             using (IDbCommand cmd = con.CreateCommand())
             {
-                cmd.CommandText = "SELECT * FROM WetBed WHERE Id = @Id";
+                cmd.CommandText = "SELECT * FROM WetBed WHERE WetBed = @WetBedId";
 
                 IDataParameter idParam = cmd.CreateParameter();
                 cmd.Parameters.Add(idParam);
-                idParam.ParameterName = "@Id";
-                idParam.Value = Id;
+                idParam.ParameterName = "@WetBedId";
+                idParam.Value = wetbedId;
 
                 con.Open();
                 IDataReader reader = cmd.ExecuteReader();
