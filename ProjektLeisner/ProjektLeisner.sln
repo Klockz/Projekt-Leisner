@@ -3,6 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeisnerWCF", "LeisnerWCF\LeisnerWCF.csproj", "{3E261D36-28ED-45C6-9499-6CA92A3B4CFC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeisnerWebForm", "LeisnerWebForm\LeisnerWebForm.csproj", "{B95FB4A4-299B-4B51-B659-AE907A84CFAB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{3E261D36-28ED-45C6-9499-6CA92A3B4CFC} = {3E261D36-28ED-45C6-9499-6CA92A3B4CFC}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +18,10 @@ Global
 		{3E261D36-28ED-45C6-9499-6CA92A3B4CFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E261D36-28ED-45C6-9499-6CA92A3B4CFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E261D36-28ED-45C6-9499-6CA92A3B4CFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B95FB4A4-299B-4B51-B659-AE907A84CFAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B95FB4A4-299B-4B51-B659-AE907A84CFAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B95FB4A4-299B-4B51-B659-AE907A84CFAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B95FB4A4-299B-4B51-B659-AE907A84CFAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
