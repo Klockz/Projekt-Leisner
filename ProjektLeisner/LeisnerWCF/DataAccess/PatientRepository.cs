@@ -15,11 +15,13 @@ namespace LeisnerWCF.DataAccess
         {
             List<Patient> patients = new List<Patient>();
 
-            DbProviderFactory fac = DbProviderFactories.GetFactory("System.Data.SqlClient");
+            DbProviderFactory fac = DbProviderFactories.GetFactory(DbHelper.ProviderName);
             
             using(IDbConnection con = fac.CreateConnection())
             using (IDbCommand cmd = con.CreateCommand())
             {
+                con.ConnectionString = DbHelper.ConnectionString;
+
                 cmd.CommandText = "SELECT * FROM Patient WHERE Customer = @CustomerId";
 
                 IDataParameter idParam = cmd.CreateParameter();

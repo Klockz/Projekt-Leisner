@@ -15,10 +15,12 @@ namespace LeisnerWCF.DataAccess
         {
             List<Questionnaire> questionnaires = new List<Questionnaire>();
 
-            DbProviderFactory fac = DbProviderFactories.GetFactory("System.Data.SqlClient");
+            DbProviderFactory fac = DbProviderFactories.GetFactory(DbHelper.ProviderName);
             using (IDbConnection con = fac.CreateConnection())
             using (IDbCommand cmd = con.CreateCommand())
             {
+                con.ConnectionString = DbHelper.ConnectionString;
+
                 cmd.CommandText = "SELECT * FROM Questionnaire WHERE Patient = @PatientId";
                 IDataParameter patientParam = cmd.CreateParameter();
                 cmd.Parameters.Add(patientParam);
@@ -54,11 +56,13 @@ namespace LeisnerWCF.DataAccess
         {
             List<WetBed> wetBeds = new List<WetBed>();
 
-            DbProviderFactory fac = DbProviderFactories.GetFactory("System.Data.SqlClient");
+            DbProviderFactory fac = DbProviderFactories.GetFactory(DbHelper.ProviderName);
 
             using(IDbConnection con = fac.CreateConnection())
             using (IDbCommand cmd = con.CreateCommand())
             {
+                con.ConnectionString = DbHelper.ConnectionString;
+
                 cmd.CommandText = "SELECT * FROM WetBed WHERE Questionnaire = @QuestionnaireId";
 
                 IDataParameter idParam = cmd.CreateParameter();
@@ -86,11 +90,13 @@ namespace LeisnerWCF.DataAccess
         {
             List<ToiletVisit> toiletVisits = new List<ToiletVisit>();
 
-            DbProviderFactory fac = DbProviderFactories.GetFactory("System.Data.SqlClient");
+            DbProviderFactory fac = DbProviderFactories.GetFactory(DbHelper.ProviderName);
 
             using(IDbConnection con = fac.CreateConnection())
             using (IDbCommand cmd = con.CreateCommand())
             {
+                con.ConnectionString = DbHelper.ConnectionString;
+
                 cmd.CommandText = "SELECT * FROM ToiletVisit WHERE Questionnaire = @QuestionnaireId";
                 
                 IDataParameter idParam = cmd.CreateParameter();
