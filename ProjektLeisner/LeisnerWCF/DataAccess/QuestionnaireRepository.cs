@@ -117,5 +117,105 @@ namespace LeisnerWCF.DataAccess
 
             return toiletVisits;
         }
+
+        public bool InsertQuestionnaire(Questionnaire questionnaire, Patient patient)
+        {
+            DbProviderFactory fac = DbProviderFactories.GetFactory(DbHelper.ProviderName);
+            using (IDbConnection con = fac.CreateConnection())
+            using (IDbCommand cmd = con.CreateCommand())
+            {
+                con.ConnectionString = DbHelper.ConnectionString;
+
+                cmd.CommandText = "INSERT INTO Questionnaire(Motivation, Date, Comment, PleaseContact, Patient) VALUES (@Motivation, @Date, @Comment, @PleaseContact, @Patient)";
+
+                IDataParameter motivationParam = cmd.CreateParameter();
+                cmd.Parameters.Add(motivationParam);
+                motivationParam.ParameterName = "@Motivation";
+                motivationParam.Value = questionnaire.Motivation;
+
+                IDataParameter CommentParam = cmd.CreateParameter();
+                cmd.Parameters.Add(CommentParam);
+                CommentParam.ParameterName = "@Comment";
+                CommentParam.Value = questionnaire.Comment;
+
+                IDataParameter PleaseContactParam = cmd.CreateParameter();
+                cmd.Parameters.Add(PleaseContactParam);
+                PleaseContactParam.ParameterName = "@PleaseContact";
+                PleaseContactParam.Value = questionnaire.PleaseContact;
+
+                IDataParameter DateParam = cmd.CreateParameter();
+                cmd.Parameters.Add(DateParam);
+                DateParam.ParameterName = "@Date";
+                DateParam.Value = questionnaire.Date;
+
+                IDataParameter PatientParam = cmd.CreateParameter();
+                cmd.Parameters.Add(PatientParam);
+                PatientParam.ParameterName = "@Patient";
+                PatientParam.Value = patient.Id;
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+
+                insertWetBed(questionnaire);
+                insertToiletVisit(questionnaire);
+            }
+
+            return true;
+        }
+
+        private bool insertToiletVisit(Questionnaire questionnaire)
+        {
+            DbProviderFactory fac = DbProviderFactories.GetFactory(DbHelper.ProviderName);
+            using (IDbConnection con = fac.CreateConnection())
+            using (IDbCommand cmd = con.CreateCommand())
+            {
+                con.ConnectionString = DbHelper.ConnectionString;
+
+                foreach (ToiletVisit toiletVisit in questionnaire.ToiletVisits)
+                {
+                    cmd.CommandText = "INSERT INTO ToiletVisit(Time) VALUES (@Time)";
+
+                    IDataParameter timeParam = cmd.CreateParameter();
+                    cmd.Parameters.Add(timeParam);
+                    timeParam.ParameterName = "@Time";
+                    timeParam.Value = toiletVisit.Time;
+                }
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+
+                return true;
+            }
+        }
+
+        private bool insertWetBed(Questionnaire questionnaire)
+        {
+            DbProviderFactory fac = DbProviderFactories.GetFactory(DbHelper.ProviderName);
+            using (IDbConnection con = fac.CreateConnection())
+            using (IDbCommand cmd = con.CreateCommand())
+            {
+                con.ConnectionString = DbHelper.ConnectionString;
+
+                foreach (WetBed wetBed in questionnaire.WetBeds)
+                {
+                    cmd.CommandText = "INSERT INTO WetBed(Size, Time) VALUES (@Size, @Time)";
+
+                    IDataParameter sizeParam = cmd.CreateParameter();
+                    cmd.Parameters.Add(sizeParam);
+                    sizeParam.ParameterName = "@Size";
+                    sizeParam.Value = wetBed.Size;
+
+                    IDataParameter timeParam = cmd.CreateParameter();
+                    cmd.Parameters.Add(timeParam);
+                    timeParam.ParameterName = "@Time";
+                    timeParam.Value = wetBed.Time;
+                }
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+
+                return true;
+            }
+        }
     }
 }
