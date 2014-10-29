@@ -41,8 +41,8 @@ namespace LeisnerWCF.DataAccess
                     Questionnaire questionnaire = new Questionnaire(date, motivation, comment, pleaseContact);
                     questionnaire.Id = id;
 
-                    questionnaire.ToiletVisits = new List<ToiletVisit>();
-                    questionnaire.WetBeds = new List<WetBed>();
+                    questionnaire.ToiletVisits = GetToiletVisitsById(id);
+                    questionnaire.WetBeds = GetWetbedsByQuestionnaireId(id);
                     questionnaires.Add(questionnaire);
 
                     GetWetbedsByQuestionnaireId(id);
@@ -75,11 +75,12 @@ namespace LeisnerWCF.DataAccess
 
                 while (reader.Read())
                 {
+                    int id = (int)reader["Id"];
                     string size = (string)reader["Size"];
                     DateTime time = (DateTime)reader["Time"];
                     SpotSize spotSize = (SpotSize)Enum.Parse(typeof(SpotSize), size);
                     WetBed wetBed = new WetBed(spotSize , time);
-                    wetBed.Id = questionnaireId;
+                    wetBed.Id = id;
                     wetBeds.Add(wetBed);
                 }
             }
@@ -109,9 +110,10 @@ namespace LeisnerWCF.DataAccess
 
                 while (reader.Read())
                 {
+                    int id = (int)reader["Id"];
                     DateTime time = (DateTime)reader["Time"];
                     ToiletVisit visit = new ToiletVisit(time);
-                    visit.Id = questionnaireId;
+                    visit.Id = id;
                     toiletVisits.Add(visit);
                 }
             }

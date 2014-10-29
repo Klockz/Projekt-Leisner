@@ -16,7 +16,9 @@ namespace LeisnerWCF
         {
             get
             {
-                return new CustomerRepository();
+                var questionnaireRepo = new QuestionnaireRepository();
+                var patientRepo = new PatientRepository(questionnaireRepo);
+                return new CustomerRepository(patientRepo);
             }
         }
 

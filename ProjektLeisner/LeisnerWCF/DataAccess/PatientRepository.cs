@@ -10,6 +10,12 @@ namespace LeisnerWCF.DataAccess
 {
     public class PatientRepository
     {
+        private QuestionnaireRepository questionnaireRepo;
+
+        public PatientRepository(QuestionnaireRepository questionnaireRepo)
+        {
+            this.questionnaireRepo = questionnaireRepo;
+        }
 
         public List<Patient> GetPatientsByCustomerId(int customerId)
         {
@@ -34,13 +40,14 @@ namespace LeisnerWCF.DataAccess
 
                 while (reader.Read())
                 {
+                    int id = (int)reader["Id"];
                     string name = (string)reader["Name"];
                     int age = (int)reader["Age"];
 
                     Patient patient = new Patient(name, age);
-                    patient.Id = customerId;
+                    patient.Id = id;
 
-                    patient.Questionnaires = new List<Questionnaire>();
+                    patient.Questionnaires = questionnaireRepo.GetQuestionnairesByPatientId(id);
                     patients.Add(patient);
                 }
             }
