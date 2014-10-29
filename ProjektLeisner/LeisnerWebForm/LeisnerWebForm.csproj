@@ -64,6 +64,7 @@
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />
     <Content Include="Images\bg-top.jpg" />
+    <Content Include="Images\remove.png" />
     <Content Include="QuestionnaireUserControl.ascx" />
     <Content Include="Service References\ServiceReference1\LeisnerWebForm.ServiceReference1.Customer.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

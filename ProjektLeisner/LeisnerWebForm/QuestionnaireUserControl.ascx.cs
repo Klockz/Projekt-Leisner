@@ -34,13 +34,13 @@ namespace LeisnerWebForm
 
         protected void CreatePostBackControls(int _wetBedViewState, int _toiletVisitsViewState)
         {
-            for (int i = 0; i < _wetBedViewState; i++)
+            for (int i = 1; i <= _wetBedViewState; i++)
             {
                 string id = i.ToString();
                 createWetBedCtrl(id);
             }
 
-            for (int i = 0; i < _toiletVisitsViewState; i++)
+            for (int i = 1; i <= _toiletVisitsViewState; i++)
             {
                 string id = i.ToString();
                 createToiletVisitCtrl(id);
