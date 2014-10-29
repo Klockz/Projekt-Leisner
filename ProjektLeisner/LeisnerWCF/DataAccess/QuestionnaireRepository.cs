@@ -179,10 +179,10 @@ namespace LeisnerWCF.DataAccess
                     cmd.Parameters.Add(timeParam);
                     timeParam.ParameterName = "@Time";
                     timeParam.Value = toiletVisit.Time;
-                }
 
-                con.Open();
-                cmd.ExecuteNonQuery();
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
 
                 return true;
             }
@@ -209,10 +209,10 @@ namespace LeisnerWCF.DataAccess
                     cmd.Parameters.Add(timeParam);
                     timeParam.ParameterName = "@Time";
                     timeParam.Value = wetBed.Time;
-                }
 
-                con.Open();
-                cmd.ExecuteNonQuery();
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
 
                 return true;
             }
