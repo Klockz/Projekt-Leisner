@@ -30,7 +30,7 @@ namespace LeisnerWCF.DataAccess
 
                 while (reader.Read())
                 {
-                    int Id = (int) reader["Id"];
+                    //int id = (int) reader["Id"];
                     string comment = (string) reader["Comment"];
                     int motivation = (int) reader["Motivation"];
                     bool pleaseContact = (bool) reader["PleaseContact"];

@@ -70,6 +70,7 @@
     <Compile Include="DataAccess\CustomerRepository.cs" />
     <Compile Include="DataAccess\PatientRepository.cs" />
     <Compile Include="DataAccess\QuestionnaireRepository.cs" />
+    <Compile Include="DataAccess\DbHelper.cs" />
     <Compile Include="Enums\SpotSize.cs" />
     <Compile Include="IBedwetterService.cs" />
     <Compile Include="Model\Customer.cs" />

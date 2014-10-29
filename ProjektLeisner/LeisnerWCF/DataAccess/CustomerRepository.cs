@@ -16,10 +16,12 @@ namespace LeisnerWCF.DataAccess
         {
             Customer customer = null;
 
-            DbProviderFactory fac = DbProviderFactories.GetFactory("System.Data.SqlClient");
+            DbProviderFactory fac = DbProviderFactories.GetFactory(DbHelper.ProviderName);
             using (IDbConnection con = fac.CreateConnection())
             using (IDbCommand cmd = con.CreateCommand())
             {
+                con.ConnectionString = DbHelper.ConnectionString;
+
                 cmd.CommandText = "SELECT * FROM Customer WHERE Email = @Email";
 
                 IDataParameter emailParam = cmd.CreateParameter();
