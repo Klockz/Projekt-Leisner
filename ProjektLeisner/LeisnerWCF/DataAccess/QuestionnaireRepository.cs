@@ -44,9 +44,6 @@ namespace LeisnerWCF.DataAccess
                     questionnaire.ToiletVisits = GetToiletVisitsById(id);
                     questionnaire.WetBeds = GetWetbedsByQuestionnaireId(id);
                     questionnaires.Add(questionnaire);
-
-                    GetWetbedsByQuestionnaireId(id);
-                    GetToiletVisitsById(id);
                 }
             }
             return questionnaires;
