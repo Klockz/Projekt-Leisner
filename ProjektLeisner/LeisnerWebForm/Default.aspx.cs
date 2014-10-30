@@ -129,7 +129,7 @@ namespace LeisnerWebForm
             questionnaire.PleaseContact = contactCheckBox.Checked;
 
             // Patient midlertidig:
-            Patient patient = new Patient() { Age = 13, Id = 0, Name = "Poul" };
+            Patient patient = new Patient() { Age = 13, Id = 1, Name = "Poul" };
             patient.Questionnaires = new List<Questionnaire>(){questionnaire};
             bedwetterService.SubmitQuestionnaire(questionnaire, patient);
 
