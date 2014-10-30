@@ -14,18 +14,28 @@ namespace LeisnerWebForm
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            Customer customer = client.GetCustomer(LoginControl.UserName);
+
+
             
-            if (customer.Email != null)
+        }
+
+        protected void LoginControl_Authenticate(object sender, AuthenticateEventArgs e)
+        {
+            Customer customer = client.GetCustomer(LoginControl.UserName);
+
+            if (customer != null)
             {
-                
+                Response.Redirect("default.aspx");
             }
             else
             {
                 ErrorMessage.Text = LoginControl.UserNameRequiredErrorMessage;
             }
+        }
 
-            
+        protected void LoginControl_LoggingIn(object sender, LoginCancelEventArgs e)
+        {
+
         }
     }
 }
