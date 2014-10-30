@@ -48,7 +48,7 @@ namespace LeisnerWCF
 
         public List<Customer> GetAllCustomers()
         {
-            throw new NotImplementedException();
+            return customerRepo.GetAllCustomers();
         }
     }
 }
