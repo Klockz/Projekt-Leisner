@@ -126,7 +126,11 @@ namespace LeisnerWCF.DataAccess
             {
                 con.ConnectionString = DbHelper.ConnectionString;
 
-                cmd.CommandText = "INSERT INTO Questionnaire(Motivation, Date, Comment, PleaseContact, Patient) VALUES (@Motivation, @Date, @Comment, @PleaseContact, @Patient)";
+                cmd.CommandText = @"
+                    INSERT INTO Questionnaire(Motivation, Date, Comment, PleaseContact, Patient)
+                    VALUES (@Motivation, @Date, @Comment, @PleaseContact, @Patient)
+                    SELECT @@IDENTITY
+                    ";
 
                 IDataParameter motivationParam = cmd.CreateParameter();
                 cmd.Parameters.Add(motivationParam);
@@ -154,7 +158,9 @@ namespace LeisnerWCF.DataAccess
                 PatientParam.Value = patient.Id;
 
                 con.Open();
-                cmd.ExecuteNonQuery();
+                IDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+                questionnaire.Id = int.Parse(reader[0].ToString());
 
                 insertWetBed(questionnaire);
                 insertToiletVisit(questionnaire);
@@ -173,12 +179,17 @@ namespace LeisnerWCF.DataAccess
 
                 foreach (ToiletVisit toiletVisit in questionnaire.ToiletVisits)
                 {
-                    cmd.CommandText = "INSERT INTO ToiletVisit(Time) VALUES (@Time)";
+                    cmd.CommandText = "INSERT INTO ToiletVisit(Time, Questionnaire) VALUES (@Time, @Questionnaire)";
 
                     IDataParameter timeParam = cmd.CreateParameter();
                     cmd.Parameters.Add(timeParam);
                     timeParam.ParameterName = "@Time";
                     timeParam.Value = toiletVisit.Time;
+
+                    IDataParameter questionnaireParam = cmd.CreateParameter();
+                    cmd.Parameters.Add(questionnaireParam);
+                    questionnaireParam.ParameterName = "@Questionnaire";
+                    questionnaireParam.Value = questionnaire.Id;
 
                     con.Open();
                     cmd.ExecuteNonQuery();
@@ -198,7 +209,7 @@ namespace LeisnerWCF.DataAccess
 
                 foreach (WetBed wetBed in questionnaire.WetBeds)
                 {
-                    cmd.CommandText = "INSERT INTO WetBed(Size, Time) VALUES (@Size, @Time)";
+                    cmd.CommandText = "INSERT INTO WetBed(Size, Time, Questionnaire) VALUES (@Size, @Time, @Questionnaire)";
 
                     IDataParameter sizeParam = cmd.CreateParameter();
                     cmd.Parameters.Add(sizeParam);
@@ -209,6 +220,11 @@ namespace LeisnerWCF.DataAccess
                     cmd.Parameters.Add(timeParam);
                     timeParam.ParameterName = "@Time";
                     timeParam.Value = wetBed.Time;
+
+                    IDataParameter questionnaireParam = cmd.CreateParameter();
+                    cmd.Parameters.Add(questionnaireParam);
+                    questionnaireParam.ParameterName = "@Questionnaire";
+                    questionnaireParam.Value = questionnaire.Id;
 
                     con.Open();
                     cmd.ExecuteNonQuery();
