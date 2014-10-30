@@ -10,8 +10,8 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="main">
-            <asp:Image runat="server" ImageAlign="Middle" ImageUrl="~/Images/bg-top.jpg"/>
+        <div id="main" align="center">
+            <asp:Image runat="server" ImageUrl="~/Images/bg-top.jpg"/>
             <div id="userControl">
                 <QuestionnaireUserControl:QuestionnaireTag runat="server"/>
             </div>
