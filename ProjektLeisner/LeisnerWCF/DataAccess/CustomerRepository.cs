@@ -48,7 +48,6 @@ namespace LeisnerWCF.DataAccess
                     customer = new Customer(name, email, phoneNo, customerNo);
                     customer.Id = id;
                     
-                    // TODO: Get patients
                     customer.Patients = patientRepo.GetPatientsByCustomerId(id);
                 }
             }
@@ -82,7 +81,6 @@ namespace LeisnerWCF.DataAccess
                     Customer customer = new Customer(name, email, phoneNo, customerNo);
                     customer.Id = id;
                     
-                    // TODO: Get patients
                     customer.Patients = patientRepo.GetPatientsByCustomerId(id);
 
                     customers.Add(customer);
