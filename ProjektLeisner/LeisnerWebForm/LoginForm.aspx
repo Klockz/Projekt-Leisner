@@ -9,7 +9,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-            <div id="main">
+            <div id="main" align="center">
             <asp:Image runat="server" ImageAlign="Middle" ImageUrl="~/Images/bg-top.jpg"/>
             <div id="userControl">
                 <LoginUserControl:LoginTag runat="server"/>

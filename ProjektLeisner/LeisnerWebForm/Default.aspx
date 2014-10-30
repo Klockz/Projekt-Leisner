@@ -12,7 +12,7 @@
     <form id="form1" runat="server">
         <div id="main" align="center">
             <asp:Image runat="server" ImageUrl="~/Images/bg-top.jpg"/>
-            <div id="userControl">
+            <div id="userControl" align="left">
                 <QuestionnaireUserControl:QuestionnaireTag runat="server"/>
             </div>
         </div>
