@@ -1,5 +1,4 @@
 ﻿body {
-    margin: 0 auto;
     background-color: #ffffff;
     font-size: 13px;
     color: #3d3c3c;
@@ -7,12 +6,10 @@
 }
 
 #main {
-    margin: 0 auto;
     background-color: #ffffff;
 }
 
 #userControl {
-    margin: 0 auto;
     width: 947px;
     padding:5px;
     padding-left:5px;
