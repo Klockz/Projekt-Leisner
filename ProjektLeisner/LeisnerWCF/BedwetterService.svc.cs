@@ -45,5 +45,10 @@ namespace LeisnerWCF
         {
             return QuestionnaireRepo.InsertQuestionnaire(questionnaire, patient);
         }
+
+        public List<Customer> GetAllCustomers()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
