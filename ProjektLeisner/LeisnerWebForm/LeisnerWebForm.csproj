@@ -63,6 +63,8 @@
     <None Include="Service References\ServiceReference1\BedwetterService.disco" />
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <Content Include="Images\bg-top.jpg" />
+    <Content Include="QuestionnaireUserControl.ascx" />
     <Content Include="LoginUserControl.ascx" />
     <Content Include="Service References\ServiceReference1\LeisnerWebForm.ServiceReference1.Customer.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -90,6 +92,13 @@
       <DependentUpon>LoginUserControl.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuestionnaireUserControl.ascx.cs">
+      <DependentUpon>QuestionnaireUserControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QuestionnaireUserControl.ascx.designer.cs">
+      <DependentUpon>QuestionnaireUserControl.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
