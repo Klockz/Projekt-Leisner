@@ -172,13 +172,14 @@ namespace LeisnerWCF.DataAccess
         private bool insertToiletVisit(Questionnaire questionnaire)
         {
             DbProviderFactory fac = DbProviderFactories.GetFactory(DbHelper.ProviderName);
-            using (IDbConnection con = fac.CreateConnection())
-            using (IDbCommand cmd = con.CreateCommand())
-            {
-                con.ConnectionString = DbHelper.ConnectionString;
 
-                foreach (ToiletVisit toiletVisit in questionnaire.ToiletVisits)
+            foreach (ToiletVisit toiletVisit in questionnaire.ToiletVisits)
+            {
+                using (IDbConnection con = fac.CreateConnection())
+                using (IDbCommand cmd = con.CreateCommand())
                 {
+                    con.ConnectionString = DbHelper.ConnectionString;
+
                     cmd.CommandText = "INSERT INTO ToiletVisit(Time, Questionnaire) VALUES (@Time, @Questionnaire)";
 
                     IDataParameter timeParam = cmd.CreateParameter();
@@ -194,27 +195,26 @@ namespace LeisnerWCF.DataAccess
                     con.Open();
                     cmd.ExecuteNonQuery();
                 }
-
-                return true;
             }
+                return true;
         }
 
         private bool insertWetBed(Questionnaire questionnaire)
         {
             DbProviderFactory fac = DbProviderFactories.GetFactory(DbHelper.ProviderName);
-            using (IDbConnection con = fac.CreateConnection())
-            using (IDbCommand cmd = con.CreateCommand())
+            foreach (WetBed wetBed in questionnaire.WetBeds)
             {
-                con.ConnectionString = DbHelper.ConnectionString;
-
-                foreach (WetBed wetBed in questionnaire.WetBeds)
+                using (IDbConnection con = fac.CreateConnection())
+                using (IDbCommand cmd = con.CreateCommand())
                 {
+                    con.ConnectionString = DbHelper.ConnectionString;
+
                     cmd.CommandText = "INSERT INTO WetBed(Size, Time, Questionnaire) VALUES (@Size, @Time, @Questionnaire)";
 
                     IDataParameter sizeParam = cmd.CreateParameter();
                     cmd.Parameters.Add(sizeParam);
                     sizeParam.ParameterName = "@Size";
-                    sizeParam.Value = wetBed.Size;
+                    sizeParam.Value = wetBed.Size.ToString();
 
                     IDataParameter timeParam = cmd.CreateParameter();
                     cmd.Parameters.Add(timeParam);
@@ -229,9 +229,8 @@ namespace LeisnerWCF.DataAccess
                     con.Open();
                     cmd.ExecuteNonQuery();
                 }
-
-                return true;
             }
+                return true;
         }
     }
 }
