@@ -8,9 +8,8 @@ using System.Web.UI.WebControls;
 
 namespace LeisnerWebForm
 {
-    public partial class QuestionnaireUserControl : System.Web.UI.UserControl
+    public partial class QuestionnairePage : System.Web.UI.Page
     {
-
         private BedwetterServiceClient bedwetterService = new BedwetterServiceClient();
         private int wetBedViewState = 1;
         private int toiletVisitsViewState = 1;
@@ -149,7 +148,11 @@ namespace LeisnerWebForm
             // Patient midlertidig:
             Patient patient = new Patient() { Age = 13, Id = 1, Name = "Poul" };
             patient.Questionnaires = new List<Questionnaire>() { questionnaire };
-            bedwetterService.SubmitQuestionnaire(questionnaire, patient);
+
+            if (bedwetterService.SubmitQuestionnaire(questionnaire, patient) == true)
+            {
+                Response.Redirect("QuestionnaireSuccess.aspx");
+            }
 
         }
 

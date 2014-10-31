@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace LeisnerWebForm
 {
-    public partial class LoginForm : System.Web.UI.Page
+    public partial class QuestionnaireSuccess : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
