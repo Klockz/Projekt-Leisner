@@ -16,5 +16,7 @@ namespace LeisnerWCF
         Customer GetCustomer(string email);
         [OperationContract]
         bool SubmitQuestionnaire(Questionnaire questionnaire, Patient patient);
+        [OperationContract]
+        List<Customer> GetAllCustomers();
     }
 }

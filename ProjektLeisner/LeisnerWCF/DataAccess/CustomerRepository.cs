@@ -48,12 +48,46 @@ namespace LeisnerWCF.DataAccess
                     customer = new Customer(name, email, phoneNo, customerNo);
                     customer.Id = id;
                     
-                    // TODO: Get patients
                     customer.Patients = patientRepo.GetPatientsByCustomerId(id);
                 }
             }
 
             return customer;
+        }
+
+        internal List<Customer> GetAllCustomers()
+        {
+            List<Customer> customers = new List<Customer>();
+
+            DbProviderFactory fac = DbProviderFactories.GetFactory(DbHelper.ProviderName);
+            using (IDbConnection con = fac.CreateConnection())
+            using (IDbCommand cmd = con.CreateCommand())
+            {
+                con.ConnectionString = DbHelper.ConnectionString;
+
+                cmd.CommandText = "SELECT * FROM Customer";
+
+                con.Open();
+                IDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int id = (int)reader["Id"];
+                    string name = (string)reader["Name"];
+                    string email = (string)reader["Email"];
+                    int phoneNo = (int)reader["PhoneNo"];
+                    int customerNo = (int)reader["CustomerNo"];
+
+                    Customer customer = new Customer(name, email, phoneNo, customerNo);
+                    customer.Id = id;
+                    
+                    customer.Patients = patientRepo.GetPatientsByCustomerId(id);
+
+                    customers.Add(customer);
+                }
+            }
+
+            return customers;
         }
     }
 }

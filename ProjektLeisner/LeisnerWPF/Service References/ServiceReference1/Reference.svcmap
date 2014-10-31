@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="550761d9-6ec8-446d-a8e8-2bb8f466addb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2311/BedwetterService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="BedwetterService.xsd" MetadataType="Schema" ID="b7806ad3-d396-45e3-b617-81df5d3304cf" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?xsd=xsd1" />
+    <MetadataFile FileName="BedwetterService.wsdl" MetadataType="Wsdl" ID="352ea1aa-bdbf-42df-9612-29123dff4110" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?wsdl" />
+    <MetadataFile FileName="BedwetterService1.xsd" MetadataType="Schema" ID="4c57880c-7f63-4010-a8b5-c5bb96bc1602" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?xsd=xsd2" />
+    <MetadataFile FileName="BedwetterService2.xsd" MetadataType="Schema" ID="f3f6fff6-a3f9-4355-8919-65873dcbf527" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?xsd=xsd3" />
+    <MetadataFile FileName="BedwetterService.disco" MetadataType="Disco" ID="861621fe-79c6-42db-830e-2ffc85520c65" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?disco" />
+    <MetadataFile FileName="BedwetterService3.xsd" MetadataType="Schema" ID="e3ae6b93-ae45-4cf8-a0dd-1b6e152f69e2" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
