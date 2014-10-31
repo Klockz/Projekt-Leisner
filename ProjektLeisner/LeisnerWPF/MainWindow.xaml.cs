@@ -66,6 +66,7 @@ namespace LeisnerWPF
             {
                 MarkerSize = 3,
                 MarkerStroke = OxyColors.Red,
+                Color = OxyColors.Red,
                 StrokeThickness = 1,
                 MarkerType = MarkerType.Star,
             };
@@ -73,6 +74,7 @@ namespace LeisnerWPF
             {
                 MarkerSize = 3,
                 MarkerStroke = OxyColors.Green,
+                Color = OxyColors.Green,
                 StrokeThickness = 1,
                 MarkerType = MarkerType.Star,
             };
