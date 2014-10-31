@@ -70,7 +70,7 @@
                 </TabItem>
                 <TabItem Header="Statistik">
                     <Grid Background="#FFE5E5E5">
-                        <oxy:PlotView x:Name="Lars"/>
+                        <oxy:PlotView x:Name="peeTrendPlotView"/>
                     </Grid>
                     
                         

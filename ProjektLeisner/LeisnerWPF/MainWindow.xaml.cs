@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using OxyPlot;
+using OxyPlot.Axes;
 using OxyPlot.Series;
 
 namespace LeisnerWPF
@@ -25,22 +26,12 @@ namespace LeisnerWPF
     {
         BedwetterServiceClient client;
 
-        public PlotModel Graph { get; private set; }
-
         public MainWindow()
         {
             InitializeComponent();
 
             client = new BedwetterServiceClient();
 
-            gridQ.Visibility = Visibility.Hidden;
-
-            
-
-            this.Graph = new PlotModel {Title = "Lortehoved"};
-            this.Graph.Series.Add(new FunctionSeries(Math.Cos, 10, 15 , 0.1, "cos(x)"));
-
-            Lars.Model = Graph;
         }
 
         private void btnGetCustomers_Click(object sender, RoutedEventArgs e)
@@ -62,6 +53,53 @@ namespace LeisnerWPF
             Patient patient = (Patient)listPatient.SelectedItem;
 
             listQuestionnaire.ItemsSource = patient.Questionnaires;
+
+            // make graph
+            WetBed wb2 = new WetBed()
+            {
+                Time = DateTime.Parse("2010-10-10").AddHours(8).AddMinutes(10),
+                Size = SpotSize.L,
+            };
+            WetBed wb1 = new WetBed()
+            {
+                Time = DateTime.Parse("2010-10-10").AddHours(10).AddMinutes(10),
+                Size = SpotSize.M,
+            };
+            WetBed wb3 = new WetBed()
+            {
+                Time = DateTime.Parse("2010-10-10").AddHours(8).AddMinutes(40),
+                Size = SpotSize.S,
+            };
+            WetBed wb4 = new WetBed()
+            {
+                Time = DateTime.Parse("2010-10-10").AddHours(9).AddMinutes(10),
+                Size = SpotSize.XL,
+            };
+
+            PlotModel peeTrendPlotModel = new PlotModel {Title = "Tissetrends"};
+            DateTimeAxis dateTimeAxis = new DateTimeAxis(AxisPosition.Bottom, "Tid og Dato", "dd/MM/yy HH:mm");
+            LinearAxis valueAxis = new LinearAxis(AxisPosition.Left, 0);
+            dateTimeAxis.Minimum = DateTimeAxis.ToDouble(wb2.Time.AddMinutes(-10));
+            dateTimeAxis.Maximum = DateTimeAxis.ToDouble(wb1.Time.AddMinutes(10));
+            valueAxis.Minimum = -0.1;
+            valueAxis.Maximum = 5.1;
+            peeTrendPlotModel.Axes.Add(dateTimeAxis);
+            peeTrendPlotModel.Axes.Add(valueAxis);
+
+            LineSeries series = new LineSeries
+            {
+                MarkerSize = 3,
+                MarkerStroke = OxyColors.Green,
+                StrokeThickness = 1,
+                MarkerType = MarkerType.Star,
+            };
+            series.Points.Add(new DataPoint(DateTimeAxis.ToDouble(wb2.Time), (double)wb2.Size));
+            series.Points.Add(new DataPoint(DateTimeAxis.ToDouble(wb3.Time), (double)wb3.Size));
+            series.Points.Add(new DataPoint(DateTimeAxis.ToDouble(wb4.Time), (double)wb4.Size));
+            series.Points.Add(new DataPoint(DateTimeAxis.ToDouble(wb1.Time), (double)wb1.Size));
+            peeTrendPlotModel.Series.Add(series);
+
+            peeTrendPlotView.Model = peeTrendPlotModel;
         }
 
         private void listQuestionnaire_SelectionChanged(object sender, SelectionChangedEventArgs e)
