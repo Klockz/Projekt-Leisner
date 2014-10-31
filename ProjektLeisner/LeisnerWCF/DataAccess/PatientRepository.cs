@@ -22,8 +22,8 @@ namespace LeisnerWCF.DataAccess
             List<Patient> patients = new List<Patient>();
 
             DbProviderFactory fac = DbProviderFactories.GetFactory(DbHelper.ProviderName);
-            
-            using(IDbConnection con = fac.CreateConnection())
+
+            using (IDbConnection con = fac.CreateConnection())
             using (IDbCommand cmd = con.CreateCommand())
             {
                 con.ConnectionString = DbHelper.ConnectionString;
@@ -52,6 +52,39 @@ namespace LeisnerWCF.DataAccess
                 }
             }
             return patients;
+        }
+
+        internal bool AddPatient(string name, int age, Customer customer)
+        {
+            DbProviderFactory fac = DbProviderFactories.GetFactory(DbHelper.ProviderName);
+            using (IDbConnection con = fac.CreateConnection())
+            using (IDbCommand cmd = con.CreateCommand())
+            {
+                con.ConnectionString = DbHelper.ConnectionString;
+
+                cmd.CommandText = @"
+                    INSERT INTO Patient(Name, Age, Customer)
+                    VALUES (@Name, @Age, @Customer)";
+
+                IDataParameter nameParam = cmd.CreateParameter();
+                cmd.Parameters.Add(nameParam);
+                nameParam.ParameterName = "@Name";
+                nameParam.Value = name;
+
+                IDataParameter ageParam = cmd.CreateParameter();
+                cmd.Parameters.Add(ageParam);
+                ageParam.ParameterName = "@Age";
+                ageParam.Value = age;
+
+                IDataParameter customerParam = cmd.CreateParameter();
+                cmd.Parameters.Add(customerParam);
+                customerParam.ParameterName = "@Customer";
+                customerParam.Value = customer.Id;
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            return true;
         }
     }
 }

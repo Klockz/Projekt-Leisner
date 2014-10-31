@@ -123,8 +123,7 @@ namespace LeisnerWCF.DataAccess
                 customerNoParam.Value = customerNo;
 
                 con.Open();
-                IDataReader reader = cmd.ExecuteReader();
-                reader.Read();
+                cmd.ExecuteNonQuery();
             }
 
             return true;
