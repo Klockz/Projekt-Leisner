@@ -13,7 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.
+using OxyPlot;
+using OxyPlot.Series;
 
 namespace LeisnerWPF
 {
@@ -24,6 +25,8 @@ namespace LeisnerWPF
     {
         BedwetterServiceClient client;
 
+        public PlotModel Graph { get; private set; }
+
         public MainWindow()
         {
             InitializeComponent();
@@ -33,6 +36,11 @@ namespace LeisnerWPF
             gridQ.Visibility = Visibility.Hidden;
 
             
+
+            this.Graph = new PlotModel {Title = "Lortehoved"};
+            this.Graph.Series.Add(new FunctionSeries(Math.Cos, 10, 15 , 0.1, "cos(x)"));
+
+            Lars.Model = Graph;
         }
 
         private void btnGetCustomers_Click(object sender, RoutedEventArgs e)
