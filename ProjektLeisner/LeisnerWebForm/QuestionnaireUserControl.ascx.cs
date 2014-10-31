@@ -172,6 +172,13 @@ namespace LeisnerWebForm
             timeTextBox.EnableViewState = true;
             wetBedPanel.Controls.Add(timeTextBox);
 
+            RegularExpressionValidator validator = new RegularExpressionValidator();
+            validator.ValidationExpression = "(?:[01]?[0-9]|2[0-3]):[0-5][0-9]$";
+            validator.ControlToValidate = "wetBedTimeTextBox" + id;
+            validator.ErrorMessage = "Time must entered in format HH:MM (ex. 22:15)";
+            validator.ForeColor = System.Drawing.Color.Red;
+            wetBedPanel.Controls.Add(validator);
+
             wetBedPanel.Controls.Add(new LiteralControl("<br/>"));
 
             Label sizeLabel = new Label();
@@ -205,6 +212,13 @@ namespace LeisnerWebForm
             timeTextBox.ID = "toiletVisitTimeTextBox" + id;
             timeTextBox.EnableViewState = true;
             toiletVisitsPanel.Controls.Add(timeTextBox);
+
+            RegularExpressionValidator validator = new RegularExpressionValidator();
+            validator.ValidationExpression = "(?:[01]?[0-9]|2[0-3]):[0-5][0-9]$";
+            validator.ControlToValidate = "toiletVisitTimeTextBox" + id;
+            validator.ErrorMessage = "Time must entered in format HH:MM (ex. 22:15)";
+            validator.ForeColor = System.Drawing.Color.Red;
+            toiletVisitsPanel.Controls.Add(validator);
 
             toiletVisitsPanel.Controls.Add(new LiteralControl("<br/>"));
             toiletVisitsPanel.Controls.Add(new LiteralControl("<br/>"));

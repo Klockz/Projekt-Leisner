@@ -4,11 +4,9 @@
 <asp:Table ID="Table1" runat="server">
     <asp:TableRow>
         <asp:TableCell>Patient:</asp:TableCell>
-        <asp:TableCell><asp:Label ID="patientLabel" runat="server"/></asp:TableCell>
-    </asp:TableRow>
-    <asp:TableRow>
-        <asp:TableCell>Date:</asp:TableCell>
-        <asp:TableCell><asp:TextBox ID="dateTextBox" runat="server"/></asp:TableCell>
+        <asp:TableCell><asp:Label ID="patientLabel" runat="server"/></asp:TableCell></asp:TableRow><asp:TableRow>
+        <asp:TableCell>Date:</asp:TableCell><asp:TableCell><asp:TextBox ID="dateTextBox" runat="server"/>
+            <asp:RegularExpressionValidator ForeColor="Red" runat="server" ErrorMessage="Date must be entered in format: YYYY-MM-DD (ex. 2014-10-31)" ControlToValidate="dateTextBox" ValidationExpression="^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$"></asp:RegularExpressionValidator> </asp:TableCell>
     </asp:TableRow>
 </asp:Table>
 <p />
