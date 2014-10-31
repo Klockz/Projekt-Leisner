@@ -23,6 +23,7 @@ namespace LeisnerWebForm
 
             if (customer != null)
             {
+                Session.Add("customer", customer);
                 Response.Redirect("QuestionnairePage.aspx");
             }
             else

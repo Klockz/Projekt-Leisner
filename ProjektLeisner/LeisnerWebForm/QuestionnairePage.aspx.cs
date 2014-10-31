@@ -13,6 +13,7 @@ namespace LeisnerWebForm
         private BedwetterServiceClient bedwetterService = new BedwetterServiceClient();
         private int wetBedViewState = 1;
         private int toiletVisitsViewState = 1;
+        private Customer customer;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,6 +27,12 @@ namespace LeisnerWebForm
                 {
                     toiletVisitsViewState = (int)ViewState["toiletVisits"];
                 }
+            }
+            else
+            {
+                customer = (Customer) Session["customer"];
+                patientLabel.Text = customer.Name; // fix til patient dropdown senere
+                // husk også at ændre submit metoden, så den bruger customer info i stedet for hardcoded eksempel
             }
 
             CreatePostBackControls(wetBedViewState, toiletVisitsViewState);
