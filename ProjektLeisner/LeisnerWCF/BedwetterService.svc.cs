@@ -50,5 +50,11 @@ namespace LeisnerWCF
         {
             return customerRepo.GetAllCustomers();
         }
+
+
+        public bool AddCustomer(string name, string email, int phoneNo, int customerNo)
+        {
+            return customerRepo.InsertCustomer(name, email, phoneNo, customerNo);
+        }
     }
 }
