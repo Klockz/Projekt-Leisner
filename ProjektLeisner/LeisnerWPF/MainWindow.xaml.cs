@@ -54,50 +54,44 @@ namespace LeisnerWPF
 
             listQuestionnaire.ItemsSource = patient.Questionnaires;
 
-            // make graph
-            WetBed wb2 = new WetBed()
-            {
-                Time = DateTime.Parse("2010-10-10").AddHours(8).AddMinutes(10),
-                Size = SpotSize.L,
-            };
-            WetBed wb1 = new WetBed()
-            {
-                Time = DateTime.Parse("2010-10-10").AddHours(10).AddMinutes(10),
-                Size = SpotSize.M,
-            };
-            WetBed wb3 = new WetBed()
-            {
-                Time = DateTime.Parse("2010-10-10").AddHours(8).AddMinutes(40),
-                Size = SpotSize.S,
-            };
-            WetBed wb4 = new WetBed()
-            {
-                Time = DateTime.Parse("2010-10-10").AddHours(9).AddMinutes(10),
-                Size = SpotSize.XL,
-            };
+            plotPeeTrends(patient);
+        }
 
-            PlotModel peeTrendPlotModel = new PlotModel {Title = "Tissetrends"};
-            DateTimeAxis dateTimeAxis = new DateTimeAxis(AxisPosition.Bottom, "Tid og Dato", "dd/MM/yy HH:mm");
-            LinearAxis valueAxis = new LinearAxis(AxisPosition.Left, 0);
-            dateTimeAxis.Minimum = DateTimeAxis.ToDouble(wb2.Time.AddMinutes(-10));
-            dateTimeAxis.Maximum = DateTimeAxis.ToDouble(wb1.Time.AddMinutes(10));
-            valueAxis.Minimum = -0.1;
-            valueAxis.Maximum = 5.1;
-            peeTrendPlotModel.Axes.Add(dateTimeAxis);
-            peeTrendPlotModel.Axes.Add(valueAxis);
+        private void plotPeeTrends(Patient patient)
+        {
+            List<Questionnaire> questionnaires = patient.Questionnaires;
+            questionnaires.Sort( (q1, q2) => q1.Date.CompareTo(q2.Date) );
 
-            LineSeries series = new LineSeries
+            LineSeries wetBedSeries = new LineSeries
+            {
+                MarkerSize = 3,
+                MarkerStroke = OxyColors.Red,
+                StrokeThickness = 1,
+                MarkerType = MarkerType.Star,
+            };
+            LineSeries toiletVisitSeries = new LineSeries
             {
                 MarkerSize = 3,
                 MarkerStroke = OxyColors.Green,
                 StrokeThickness = 1,
                 MarkerType = MarkerType.Star,
             };
-            series.Points.Add(new DataPoint(DateTimeAxis.ToDouble(wb2.Time), (double)wb2.Size));
-            series.Points.Add(new DataPoint(DateTimeAxis.ToDouble(wb3.Time), (double)wb3.Size));
-            series.Points.Add(new DataPoint(DateTimeAxis.ToDouble(wb4.Time), (double)wb4.Size));
-            series.Points.Add(new DataPoint(DateTimeAxis.ToDouble(wb1.Time), (double)wb1.Size));
-            peeTrendPlotModel.Series.Add(series);
+
+            // forearch questionnaire, add wetbeds and toiletvisits
+            foreach (var questionnaire in questionnaires)
+            {
+                double datePoint = DateTimeAxis.ToDouble(questionnaire.Date);
+                wetBedSeries.Points.Add(new DataPoint(datePoint, questionnaire.WetBeds.Count));
+                toiletVisitSeries.Points.Add(new DataPoint(datePoint, questionnaire.ToiletVisits.Count));
+            }
+
+            PlotModel peeTrendPlotModel = new PlotModel {Title = "Tissetrends"};
+            DateTimeAxis dateTimeAxis = new DateTimeAxis(AxisPosition.Bottom, "Dato", "dd/MM/yy");
+            LinearAxis valueAxis = new LinearAxis(AxisPosition.Left, 0);
+            peeTrendPlotModel.Axes.Add(dateTimeAxis);
+            peeTrendPlotModel.Axes.Add(valueAxis);
+            peeTrendPlotModel.Series.Add(wetBedSeries);
+            peeTrendPlotModel.Series.Add(toiletVisitSeries);
 
             peeTrendPlotView.Model = peeTrendPlotModel;
         }

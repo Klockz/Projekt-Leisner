@@ -35,7 +35,7 @@ namespace LeisnerWPF.ServiceReference1 {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LeisnerWPF.ServiceReference1.Patient[] PatientsField;
+        private System.Collections.Generic.List<LeisnerWPF.ServiceReference1.Patient> PatientsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PhoneNoField;
@@ -103,7 +103,7 @@ namespace LeisnerWPF.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public LeisnerWPF.ServiceReference1.Patient[] Patients {
+        public System.Collections.Generic.List<LeisnerWPF.ServiceReference1.Patient> Patients {
             get {
                 return this.PatientsField;
             }
@@ -157,7 +157,7 @@ namespace LeisnerWPF.ServiceReference1 {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LeisnerWPF.ServiceReference1.Questionnaire[] QuestionnairesField;
+        private System.Collections.Generic.List<LeisnerWPF.ServiceReference1.Questionnaire> QuestionnairesField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -209,7 +209,7 @@ namespace LeisnerWPF.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public LeisnerWPF.ServiceReference1.Questionnaire[] Questionnaires {
+        public System.Collections.Generic.List<LeisnerWPF.ServiceReference1.Questionnaire> Questionnaires {
             get {
                 return this.QuestionnairesField;
             }
@@ -256,10 +256,10 @@ namespace LeisnerWPF.ServiceReference1 {
         private bool PleaseContactField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LeisnerWPF.ServiceReference1.ToiletVisit[] ToiletVisitsField;
+        private System.Collections.Generic.List<LeisnerWPF.ServiceReference1.ToiletVisit> ToiletVisitsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private LeisnerWPF.ServiceReference1.WetBed[] WetBedsField;
+        private System.Collections.Generic.List<LeisnerWPF.ServiceReference1.WetBed> WetBedsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -337,7 +337,7 @@ namespace LeisnerWPF.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public LeisnerWPF.ServiceReference1.ToiletVisit[] ToiletVisits {
+        public System.Collections.Generic.List<LeisnerWPF.ServiceReference1.ToiletVisit> ToiletVisits {
             get {
                 return this.ToiletVisitsField;
             }
@@ -350,7 +350,7 @@ namespace LeisnerWPF.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public LeisnerWPF.ServiceReference1.WetBed[] WetBeds {
+        public System.Collections.Generic.List<LeisnerWPF.ServiceReference1.WetBed> WetBeds {
             get {
                 return this.WetBedsField;
             }
@@ -547,10 +547,10 @@ namespace LeisnerWPF.ServiceReference1 {
         System.Threading.Tasks.Task<bool> SubmitQuestionnaireAsync(LeisnerWPF.ServiceReference1.Questionnaire questionnaire, LeisnerWPF.ServiceReference1.Patient patient);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBedwetterService/GetAllCustomers", ReplyAction="http://tempuri.org/IBedwetterService/GetAllCustomersResponse")]
-        LeisnerWPF.ServiceReference1.Customer[] GetAllCustomers();
+        System.Collections.Generic.List<LeisnerWPF.ServiceReference1.Customer> GetAllCustomers();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBedwetterService/GetAllCustomers", ReplyAction="http://tempuri.org/IBedwetterService/GetAllCustomersResponse")]
-        System.Threading.Tasks.Task<LeisnerWPF.ServiceReference1.Customer[]> GetAllCustomersAsync();
+        System.Threading.Tasks.Task<System.Collections.Generic.List<LeisnerWPF.ServiceReference1.Customer>> GetAllCustomersAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -596,11 +596,11 @@ namespace LeisnerWPF.ServiceReference1 {
             return base.Channel.SubmitQuestionnaireAsync(questionnaire, patient);
         }
         
-        public LeisnerWPF.ServiceReference1.Customer[] GetAllCustomers() {
+        public System.Collections.Generic.List<LeisnerWPF.ServiceReference1.Customer> GetAllCustomers() {
             return base.Channel.GetAllCustomers();
         }
         
-        public System.Threading.Tasks.Task<LeisnerWPF.ServiceReference1.Customer[]> GetAllCustomersAsync() {
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<LeisnerWPF.ServiceReference1.Customer>> GetAllCustomersAsync() {
             return base.Channel.GetAllCustomersAsync();
         }
     }
