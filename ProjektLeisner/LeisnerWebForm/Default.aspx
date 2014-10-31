@@ -14,7 +14,9 @@
             <HeaderUserControl:HeaderTag runat="server" />
             <div id="content" align="center">
                 <asp:Login ID="LoginControl" runat="server" UserNameLabelText="Email:" UserNameRequiredErrorMessage="Email is required."
-                    OnAuthenticate="LoginControl_Authenticate" OnLoggingIn="LoginControl_LoggingIn"/>
+                    OnAuthenticate="LoginControl_Authenticate" OnLoggingIn="LoginControl_LoggingIn">
+                    <LoginButtonStyle CssClass="buttondefaultorange" />
+                </asp:Login>
                 <asp:Label ID="ErrorMessage" runat="server" ForeColor="Red" Text=""></asp:Label>
             </div>
         </div>
