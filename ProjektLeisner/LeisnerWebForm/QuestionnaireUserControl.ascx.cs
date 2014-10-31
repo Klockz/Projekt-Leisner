@@ -85,9 +85,18 @@ namespace LeisnerWebForm
                             if (ctrl2.ID.StartsWith("wetBedTimeTextBox"))
                             {
                                 TextBox textBox = (TextBox)ctrl2;
-                                DateTime time;
-                                DateTime.TryParse(textBox.Text, out time);
-                                wetBed.Time = time;
+                                if (textBox.Text != "")
+                                {
+                                    string[] timeString = textBox.Text.Split(':');
+                                    int hour;
+                                    int minute;
+                                    int.TryParse(timeString[0], out hour);
+                                    int.TryParse(timeString[1], out minute);
+                                    TimeSpan timeSpan = new TimeSpan(hour, minute, 0);
+                                    DateTime time = date.Add(timeSpan);
+                                    wetBed.Time = time;
+                                    wetBeds.Add(wetBed);
+                                }
                             }
                             if (ctrl2.ID.StartsWith("wetBedSizeDropDown"))
                             {
@@ -102,7 +111,6 @@ namespace LeisnerWebForm
                             }
                         }
                     }
-                    wetBeds.Add(wetBed);
                 }
             }
             questionnaire.WetBeds = wetBeds;
@@ -115,12 +123,21 @@ namespace LeisnerWebForm
                     if (ctrl.ID.StartsWith("toiletVisitTimeTextBox"))
                     {
                         TextBox textBox = (TextBox)ctrl;
-                        ToiletVisit toiletVisit = new ToiletVisit();
-                        toiletVisit.Id = 0;
-                        DateTime time;
-                        DateTime.TryParse(textBox.Text, out time);
-                        toiletVisit.Time = time;
-                        toiletVisits.Add(toiletVisit);
+                        if (textBox.Text != "")
+                        {
+                            ToiletVisit toiletVisit = new ToiletVisit();
+                            toiletVisit.Id = 0;
+
+                            string[] timeString = textBox.Text.Split(':');
+                            int hour;
+                            int minute;
+                            int.TryParse(timeString[0], out hour);
+                            int.TryParse(timeString[1], out minute);
+                            TimeSpan timeSpan = new TimeSpan(hour, minute, 0);
+                            DateTime time = date.Add(timeSpan);
+                            toiletVisit.Time = time;
+                            toiletVisits.Add(toiletVisit);
+                        }
                     }
                 }
             }
@@ -130,7 +147,7 @@ namespace LeisnerWebForm
             questionnaire.PleaseContact = contactCheckBox.Checked;
 
             // Patient midlertidig:
-            Patient patient = new Patient() { Age = 13, Id = 0, Name = "Poul" };
+            Patient patient = new Patient() { Age = 13, Id = 1, Name = "Poul" };
             patient.Questionnaires = new List<Questionnaire>() { questionnaire };
             bedwetterService.SubmitQuestionnaire(questionnaire, patient);
 
