@@ -52,9 +52,16 @@ namespace LeisnerWPF
         {
             Patient patient = (Patient)listPatient.SelectedItem;
 
-            listQuestionnaire.ItemsSource = patient.Questionnaires;
+            if (patient != null)
+            {
+                listQuestionnaire.ItemsSource = patient.Questionnaires;
 
-            plotPeeTrends(patient);
+                plotPeeTrends(patient);
+            }
+            else
+            {
+                listQuestionnaire.ItemsSource = null;
+            }
         }
 
         private void plotPeeTrends(Patient patient)
@@ -114,13 +121,17 @@ namespace LeisnerWPF
 
             gridQ.Visibility = Visibility.Visible;
 
-            listWetBeds.ItemsSource = questionnaire.WetBeds;
-            listToiletVisits.ItemsSource = questionnaire.ToiletVisits;
+            if (questionnaire != null)
+            {
+                listWetBeds.ItemsSource = questionnaire.WetBeds;
+                listToiletVisits.ItemsSource = questionnaire.ToiletVisits;
 
-            txtQComment.Text = questionnaire.Comment;
-            txtQContact.Text = questionnaire.PleaseContact.ToString();
-            txtQDate.Text = questionnaire.Date.ToShortDateString();
-            txtQMotivation.Text = questionnaire.Motivation.ToString();
+                txtQComment.Text = questionnaire.Comment;
+                txtQContact.Text = questionnaire.PleaseContact.ToString();
+                txtQDate.Text = questionnaire.Date.ToShortDateString();
+                txtQMotivation.Text = questionnaire.Motivation.ToString();
+            }
+
         }
 
         private void listWetBeds_SelectionChanged(object sender, SelectionChangedEventArgs e)
