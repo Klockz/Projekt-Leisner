@@ -76,6 +76,7 @@ namespace LeisnerWPF
                 Color = OxyColors.Red,
                 StrokeThickness = 1,
                 MarkerType = MarkerType.Diamond,
+                Title = "Uheld",
             };
             LineSeries toiletVisitSeries = new LineSeries
             {
@@ -84,6 +85,7 @@ namespace LeisnerWPF
                 Color = OxyColors.Green,
                 StrokeThickness = 1,
                 MarkerType = MarkerType.Diamond,
+                Title = "Toiletbesøg",
             };
             LineSeries motivationSeries = new LineSeries
             {
@@ -92,6 +94,7 @@ namespace LeisnerWPF
                 Color = OxyColors.Blue,
                 StrokeThickness = 1,
                 MarkerType = MarkerType.Star,
+                Title = "Motivation",
             };
 
             // forearch questionnaire, add wetbeds and toiletvisits
@@ -111,6 +114,8 @@ namespace LeisnerWPF
             peeTrendPlotModel.Series.Add(wetBedSeries);
             peeTrendPlotModel.Series.Add(toiletVisitSeries);
             peeTrendPlotModel.Series.Add(motivationSeries);
+
+            peeTrendPlotModel.LegendTitle = "Tegnforklaring";
 
             peeTrendPlotView.Model = peeTrendPlotModel;
         }
