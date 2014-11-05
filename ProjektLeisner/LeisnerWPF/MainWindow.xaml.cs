@@ -36,6 +36,8 @@ namespace LeisnerWPF
             listCustomers.ItemsSource = client.GetAllCustomers();
 
             gridPatient.Visibility = Visibility.Hidden;
+
+            listCustomer.ItemsSource = client.GetAllCustomers();
         }
 
         private void btnGetCustomers_Click(object sender, RoutedEventArgs e)
