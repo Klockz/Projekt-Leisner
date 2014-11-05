@@ -27,12 +27,16 @@ namespace LeisnerWebForm
                 {
                     toiletVisitsViewState = (int)ViewState["toiletVisits"];
                 }
+                if (Session["customer"] != null)
+                {
+                    customer = (Customer) Session["customer"];
+                }
             }
             else
             {
                 customer = (Customer) Session["customer"];
-                patientLabel.Text = customer.Name; // fix til patient dropdown senere
-                // husk også at ændre submit metoden, så den bruger customer info i stedet for hardcoded eksempel
+                patientDropDown.DataSource = customer.Patients;
+                patientDropDown.DataBind();
             }
 
             CreatePostBackControls(wetBedViewState, toiletVisitsViewState);
@@ -152,15 +156,19 @@ namespace LeisnerWebForm
             questionnaire.Comment = commentTextBox.Text;
             questionnaire.PleaseContact = contactCheckBox.Checked;
 
-            // Patient midlertidig:
-            Patient patient = new Patient() { Age = 13, Id = 1, Name = "Poul" };
-            patient.Questionnaires = new List<Questionnaire>() { questionnaire };
+            Patient patient = new Patient();
+            foreach (Patient pat in customer.Patients)
+            {
+                if (patientDropDown.SelectedItem.Value == pat.Name)
+                {
+                    patient = pat;
+                }
+            }
 
             if (bedwetterService.SubmitQuestionnaire(questionnaire, patient) == true)
             {
                 Response.Redirect("QuestionnaireSuccess.aspx");
             }
-
         }
 
         private void createWetBedCtrl(string id)
