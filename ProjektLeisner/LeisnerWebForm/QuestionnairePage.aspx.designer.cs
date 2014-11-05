@@ -40,13 +40,22 @@ namespace LeisnerWebForm {
         protected global::System.Web.UI.WebControls.Table Table1;
         
         /// <summary>
-        /// patientLabel control.
+        /// patientDropDown control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label patientLabel;
+        protected global::System.Web.UI.WebControls.DropDownList patientDropDown;
+        
+        /// <summary>
+        /// RequiredFieldValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
         /// dateTextBox control.

@@ -92,6 +92,7 @@
     <Compile Include="Header.ascx.designer.cs">
       <DependentUpon>Header.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Patient.extention.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QuestionnairePage.aspx.cs">
       <DependentUpon>QuestionnairePage.aspx</DependentUpon>
