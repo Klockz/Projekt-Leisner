@@ -12,12 +12,15 @@
     <form id="form1" runat="server">
         <div id="main" align="center">
             <HeaderUserControl:HeaderTag runat="server" />
+            
             <div id="content" align="left">
                 <h1>BedWetter Questionnaire</h1>
                 <asp:Table ID="Table1" runat="server">
                     <asp:TableRow>
                         <asp:TableCell>Patient:</asp:TableCell>
-                        <asp:TableCell><asp:DropDownList ID="patientDropDown" runat="server"/></asp:TableCell></asp:TableRow><asp:TableRow>
+                        <asp:TableCell><asp:DropDownList ID="patientDropDown" runat="server"/>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ForeColor="Red" runat="server" ErrorMessage="A patient must be selected" ControlToValidate="patientDropDown"/>
+                        </asp:TableCell></asp:TableRow><asp:TableRow>
                         <asp:TableCell>Date:</asp:TableCell><asp:TableCell><asp:TextBox ID="dateTextBox" runat="server"/>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" ForeColor="Red" runat="server" ErrorMessage="Date must be entered in format: YYYY-MM-DD (ex. 2014-10-31)" ControlToValidate="dateTextBox" ValidationExpression="^(19|20)\d\d[- /.](0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])$"></asp:RegularExpressionValidator> </asp:TableCell>
                     </asp:TableRow>
