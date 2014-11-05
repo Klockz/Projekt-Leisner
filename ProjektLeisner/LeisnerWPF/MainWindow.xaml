@@ -55,7 +55,7 @@
                                     <Label Content="Motivation:" HorizontalAlignment="Left" Margin="51,61,0,0" VerticalAlignment="Top" Height="23" Width="80" Grid.Column="1"/>
                                     <Label Content="Kontakt mig:" HorizontalAlignment="Left" Margin="51,89,0,0" VerticalAlignment="Top" Height="28" Width="80" Grid.Column="1"/>
                                     <Label Content="Kommentar:" HorizontalAlignment="Left" Margin="51,117,0,0" VerticalAlignment="Top" Height="23" Width="80" Grid.Column="1"/>
-                                    <ListView x:Name="listWetBeds" HorizontalAlignment="Left" Height="132" Margin="285,29,0,0" VerticalAlignment="Top" Width="152" SelectionChanged="listWetBeds_SelectionChanged" Grid.Column="1">
+                                    <ListView x:Name="listWetBeds" HorizontalAlignment="Left" Height="132" Margin="285,29,0,0" VerticalAlignment="Top" Width="152" Grid.Column="1">
                                         <ListView.View>
                                             <GridView>
                                                 <GridViewColumn Width="75" Header="Tidspunkt"
@@ -65,7 +65,7 @@
                                             </GridView>
                                         </ListView.View>
                                     </ListView>
-                                    <ListView x:Name="listToiletVisits" HorizontalAlignment="Left" Height="132" Margin="442,29,0,0" VerticalAlignment="Top" Width="83" SelectionChanged="listToiletVisits_SelectionChanged" Grid.Column="1">
+                                    <ListView x:Name="listToiletVisits" HorizontalAlignment="Left" Height="132" Margin="442,29,0,0" VerticalAlignment="Top" Width="83" Grid.Column="1">
                                         <ListView.View>
                                             <GridView>
                                                 <GridViewColumn Width="75" Header="Tidspunkt"

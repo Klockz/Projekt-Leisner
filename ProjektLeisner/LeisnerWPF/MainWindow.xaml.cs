@@ -150,28 +150,27 @@ namespace LeisnerWPF
 
         }
 
-        private void listWetBeds_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            WetBed wetBed = (WetBed)listWetBeds.SelectedItem;
-
-           
-        }
-
-        private void listToiletVisits_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void btnCustomer_Click(object sender, RoutedEventArgs e)
         {
-            client.AddCustomer(txtName.Text, txtEmail.Text, int.Parse(txtPhone.Text), int.Parse(txtCustomerNo.Text));
+            int phone;
+            int customerNo;
+
+            int.TryParse(txtPhone.Text, out phone);
+            int.TryParse(txtCustomerNo.Text, out customerNo);
+
+            client.AddCustomer(txtName.Text, txtEmail.Text, phone, customerNo);
+
             listCustomers.ItemsSource = client.GetAllCustomers();
         }
 
         private void btnPatient_Click(object sender, RoutedEventArgs e)
         {
+            int age;
+            int.TryParse(txtPatientAge.Text, out age);
             int index = listCustomers.SelectedIndex;
-            client.AddPatient(txtPatientName.Text, int.Parse(txtPatientAge.Text), listCustomers.SelectedItem as Customer);
+
+            client.AddPatient(txtPatientName.Text, age, listCustomers.SelectedItem as Customer);
+
             listCustomers.ItemsSource = client.GetAllCustomers();
             listCustomers.SelectedIndex = index;
         }
