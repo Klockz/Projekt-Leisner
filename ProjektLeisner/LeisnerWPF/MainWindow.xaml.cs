@@ -52,9 +52,16 @@ namespace LeisnerWPF
         {
             Patient patient = (Patient)listPatient.SelectedItem;
 
-            listQuestionnaire.ItemsSource = patient.Questionnaires;
+            if (patient != null)
+            {
+                listQuestionnaire.ItemsSource = patient.Questionnaires;
 
-            plotPeeTrends(patient);
+                plotPeeTrends(patient);
+            }
+            else
+            {
+                listQuestionnaire.ItemsSource = null;
+            }
         }
 
         private void plotPeeTrends(Patient patient)
@@ -68,7 +75,8 @@ namespace LeisnerWPF
                 MarkerStroke = OxyColors.Red,
                 Color = OxyColors.Red,
                 StrokeThickness = 1,
-                MarkerType = MarkerType.Star,
+                MarkerType = MarkerType.Diamond,
+                Title = "Uheld",
             };
             LineSeries toiletVisitSeries = new LineSeries
             {
@@ -76,7 +84,17 @@ namespace LeisnerWPF
                 MarkerStroke = OxyColors.Green,
                 Color = OxyColors.Green,
                 StrokeThickness = 1,
+                MarkerType = MarkerType.Diamond,
+                Title = "Toiletbesøg",
+            };
+            LineSeries motivationSeries = new LineSeries
+            {
+                MarkerSize = 3,
+                MarkerStroke = OxyColors.Blue,
+                Color = OxyColors.Blue,
+                StrokeThickness = 1,
                 MarkerType = MarkerType.Star,
+                Title = "Motivation",
             };
 
             // forearch questionnaire, add wetbeds and toiletvisits
@@ -85,6 +103,7 @@ namespace LeisnerWPF
                 double datePoint = DateTimeAxis.ToDouble(questionnaire.Date);
                 wetBedSeries.Points.Add(new DataPoint(datePoint, questionnaire.WetBeds.Count));
                 toiletVisitSeries.Points.Add(new DataPoint(datePoint, questionnaire.ToiletVisits.Count));
+                motivationSeries.Points.Add(new DataPoint(datePoint, questionnaire.Motivation));
             }
 
             PlotModel peeTrendPlotModel = new PlotModel {Title = "Tissetrends"};
@@ -94,6 +113,9 @@ namespace LeisnerWPF
             peeTrendPlotModel.Axes.Add(valueAxis);
             peeTrendPlotModel.Series.Add(wetBedSeries);
             peeTrendPlotModel.Series.Add(toiletVisitSeries);
+            peeTrendPlotModel.Series.Add(motivationSeries);
+
+            peeTrendPlotModel.LegendTitle = "Tegnforklaring";
 
             peeTrendPlotView.Model = peeTrendPlotModel;
         }
@@ -104,13 +126,17 @@ namespace LeisnerWPF
 
             gridQ.Visibility = Visibility.Visible;
 
-            listWetBeds.ItemsSource = questionnaire.WetBeds;
-            listToiletVisits.ItemsSource = questionnaire.ToiletVisits;
+            if (questionnaire != null)
+            {
+                listWetBeds.ItemsSource = questionnaire.WetBeds;
+                listToiletVisits.ItemsSource = questionnaire.ToiletVisits;
 
-            txtQComment.Text = questionnaire.Comment;
-            txtQContact.Text = questionnaire.PleaseContact.ToString();
-            txtQDate.Text = questionnaire.Date.ToShortDateString();
-            txtQMotivation.Text = questionnaire.Motivation.ToString();
+                txtQComment.Text = questionnaire.Comment;
+                txtQContact.Text = questionnaire.PleaseContact.ToString();
+                txtQDate.Text = questionnaire.Date.ToShortDateString();
+                txtQMotivation.Text = questionnaire.Motivation.ToString();
+            }
+
         }
 
         private void listWetBeds_SelectionChanged(object sender, SelectionChangedEventArgs e)
