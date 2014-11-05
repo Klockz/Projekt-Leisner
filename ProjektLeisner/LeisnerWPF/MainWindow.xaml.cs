@@ -41,15 +41,20 @@ namespace LeisnerWPF
         private void btnGetCustomers_Click(object sender, RoutedEventArgs e)
         {
             listCustomer.ItemsSource = client.GetAllCustomers();
-            
-
         }
 
         private void listCustomer_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Customer customer = (Customer)listCustomer.SelectedItem;
 
-            listPatient.ItemsSource = customer.Patients;
+            if (customer != null)
+            {
+                listPatient.ItemsSource = customer.Patients;
+            }
+            else
+            {
+                listPatient.ItemsSource = null;
+            }
         }
 
         private void listPatient_SelectionChanged(object sender, SelectionChangedEventArgs e)
