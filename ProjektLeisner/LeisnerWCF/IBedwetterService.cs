@@ -18,5 +18,9 @@ namespace LeisnerWCF
         bool SubmitQuestionnaire(Questionnaire questionnaire, Patient patient);
         [OperationContract]
         List<Customer> GetAllCustomers();
+        [OperationContract]
+        bool AddCustomer(string name, string email, int phoneNo, int customerNo);
+        [OperationContract]
+        bool AddPatient(string name, int age, Customer customer);
     }
 }

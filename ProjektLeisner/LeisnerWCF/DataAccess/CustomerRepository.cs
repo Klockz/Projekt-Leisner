@@ -89,5 +89,44 @@ namespace LeisnerWCF.DataAccess
 
             return customers;
         }
+
+        public bool InsertCustomer(string name, string email, int phoneNo, int customerNo)
+        {
+            DbProviderFactory fac = DbProviderFactories.GetFactory(DbHelper.ProviderName);
+            using (IDbConnection con = fac.CreateConnection())
+            using (IDbCommand cmd = con.CreateCommand())
+            {
+                con.ConnectionString = DbHelper.ConnectionString;
+
+                cmd.CommandText = @"
+                    INSERT INTO Customer(Name, Email, PhoneNo, CustomerNo)
+                    VALUES (@Name, @Email, @PhoneNo, @CustomerNo)";
+
+                IDataParameter nameParam = cmd.CreateParameter();
+                cmd.Parameters.Add(nameParam);
+                nameParam.ParameterName = "@Name";
+                nameParam.Value = name;
+
+                IDataParameter emailParam = cmd.CreateParameter();
+                cmd.Parameters.Add(emailParam);
+                emailParam.ParameterName = "@Email";
+                emailParam.Value = email;
+
+                IDataParameter phoneNoParam = cmd.CreateParameter();
+                cmd.Parameters.Add(phoneNoParam);
+                phoneNoParam.ParameterName = "@PhoneNo";
+                phoneNoParam.Value = phoneNo;
+
+                IDataParameter customerNoParam = cmd.CreateParameter();
+                cmd.Parameters.Add(customerNoParam);
+                customerNoParam.ParameterName = "@CustomerNo";
+                customerNoParam.Value = customerNo;
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+
+            return true;
+        }
     }
 }

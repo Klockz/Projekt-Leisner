@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="550761d9-6ec8-446d-a8e8-2bb8f466addb" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="94fd1215-25e4-41fe-bf52-33875fa8de6a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -24,12 +24,12 @@
     <MetadataSource Address="http://localhost:2311/BedwetterService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="BedwetterService.xsd" MetadataType="Schema" ID="b7806ad3-d396-45e3-b617-81df5d3304cf" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?xsd=xsd1" />
-    <MetadataFile FileName="BedwetterService.wsdl" MetadataType="Wsdl" ID="352ea1aa-bdbf-42df-9612-29123dff4110" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?wsdl" />
-    <MetadataFile FileName="BedwetterService1.xsd" MetadataType="Schema" ID="4c57880c-7f63-4010-a8b5-c5bb96bc1602" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?xsd=xsd2" />
-    <MetadataFile FileName="BedwetterService2.xsd" MetadataType="Schema" ID="f3f6fff6-a3f9-4355-8919-65873dcbf527" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?xsd=xsd3" />
-    <MetadataFile FileName="BedwetterService.disco" MetadataType="Disco" ID="861621fe-79c6-42db-830e-2ffc85520c65" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?disco" />
-    <MetadataFile FileName="BedwetterService3.xsd" MetadataType="Schema" ID="e3ae6b93-ae45-4cf8-a0dd-1b6e152f69e2" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?xsd=xsd0" />
+    <MetadataFile FileName="BedwetterService.xsd" MetadataType="Schema" ID="6461700a-1120-4c7f-b09f-eb2115d538f7" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?xsd=xsd1" />
+    <MetadataFile FileName="BedwetterService.wsdl" MetadataType="Wsdl" ID="b9aace57-4826-4449-a4bb-95d67e4aba80" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?wsdl" />
+    <MetadataFile FileName="BedwetterService1.xsd" MetadataType="Schema" ID="459f7a18-53fd-4602-90df-490990f1e7b2" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?xsd=xsd2" />
+    <MetadataFile FileName="BedwetterService2.xsd" MetadataType="Schema" ID="3c410ba4-15dc-484f-aa73-aaace7461653" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?xsd=xsd3" />
+    <MetadataFile FileName="BedwetterService.disco" MetadataType="Disco" ID="8d1118be-7a62-4e76-bc7b-4f981cce37ad" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?disco" />
+    <MetadataFile FileName="BedwetterService3.xsd" MetadataType="Schema" ID="88f0ec0a-1576-4aad-a348-d32ca2e8b218" SourceId="1" SourceUrl="http://localhost:2311/BedwetterService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

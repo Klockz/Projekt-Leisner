@@ -545,6 +545,24 @@ namespace LeisnerWebForm.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBedwetterService/SubmitQuestionnaire", ReplyAction="http://tempuri.org/IBedwetterService/SubmitQuestionnaireResponse")]
         System.Threading.Tasks.Task<bool> SubmitQuestionnaireAsync(LeisnerWebForm.ServiceReference1.Questionnaire questionnaire, LeisnerWebForm.ServiceReference1.Patient patient);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBedwetterService/GetAllCustomers", ReplyAction="http://tempuri.org/IBedwetterService/GetAllCustomersResponse")]
+        System.Collections.Generic.List<LeisnerWebForm.ServiceReference1.Customer> GetAllCustomers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBedwetterService/GetAllCustomers", ReplyAction="http://tempuri.org/IBedwetterService/GetAllCustomersResponse")]
+        System.Threading.Tasks.Task<System.Collections.Generic.List<LeisnerWebForm.ServiceReference1.Customer>> GetAllCustomersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBedwetterService/AddCustomer", ReplyAction="http://tempuri.org/IBedwetterService/AddCustomerResponse")]
+        bool AddCustomer(string name, string email, int phoneNo, int customerNo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBedwetterService/AddCustomer", ReplyAction="http://tempuri.org/IBedwetterService/AddCustomerResponse")]
+        System.Threading.Tasks.Task<bool> AddCustomerAsync(string name, string email, int phoneNo, int customerNo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBedwetterService/AddPatient", ReplyAction="http://tempuri.org/IBedwetterService/AddPatientResponse")]
+        bool AddPatient(string name, int age, LeisnerWebForm.ServiceReference1.Customer customer);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IBedwetterService/AddPatient", ReplyAction="http://tempuri.org/IBedwetterService/AddPatientResponse")]
+        System.Threading.Tasks.Task<bool> AddPatientAsync(string name, int age, LeisnerWebForm.ServiceReference1.Customer customer);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -588,6 +606,30 @@ namespace LeisnerWebForm.ServiceReference1 {
         
         public System.Threading.Tasks.Task<bool> SubmitQuestionnaireAsync(LeisnerWebForm.ServiceReference1.Questionnaire questionnaire, LeisnerWebForm.ServiceReference1.Patient patient) {
             return base.Channel.SubmitQuestionnaireAsync(questionnaire, patient);
+        }
+        
+        public System.Collections.Generic.List<LeisnerWebForm.ServiceReference1.Customer> GetAllCustomers() {
+            return base.Channel.GetAllCustomers();
+        }
+        
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<LeisnerWebForm.ServiceReference1.Customer>> GetAllCustomersAsync() {
+            return base.Channel.GetAllCustomersAsync();
+        }
+        
+        public bool AddCustomer(string name, string email, int phoneNo, int customerNo) {
+            return base.Channel.AddCustomer(name, email, phoneNo, customerNo);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddCustomerAsync(string name, string email, int phoneNo, int customerNo) {
+            return base.Channel.AddCustomerAsync(name, email, phoneNo, customerNo);
+        }
+        
+        public bool AddPatient(string name, int age, LeisnerWebForm.ServiceReference1.Customer customer) {
+            return base.Channel.AddPatient(name, age, customer);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddPatientAsync(string name, int age, LeisnerWebForm.ServiceReference1.Customer customer) {
+            return base.Channel.AddPatientAsync(name, age, customer);
         }
     }
 }

@@ -26,6 +26,18 @@
   <wsdl:message name="IBedwetterService_GetAllCustomers_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllCustomersResponse" />
   </wsdl:message>
+  <wsdl:message name="IBedwetterService_AddCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IBedwetterService_AddCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IBedwetterService_AddPatient_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddPatient" />
+  </wsdl:message>
+  <wsdl:message name="IBedwetterService_AddPatient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddPatientResponse" />
+  </wsdl:message>
   <wsdl:portType name="IBedwetterService">
     <wsdl:operation name="GetCustomer">
       <wsdl:input wsaw:Action="http://tempuri.org/IBedwetterService/GetCustomer" message="tns:IBedwetterService_GetCustomer_InputMessage" />
@@ -38,6 +50,14 @@
     <wsdl:operation name="GetAllCustomers">
       <wsdl:input wsaw:Action="http://tempuri.org/IBedwetterService/GetAllCustomers" message="tns:IBedwetterService_GetAllCustomers_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IBedwetterService/GetAllCustomersResponse" message="tns:IBedwetterService_GetAllCustomers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBedwetterService/AddCustomer" message="tns:IBedwetterService_AddCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBedwetterService/AddCustomerResponse" message="tns:IBedwetterService_AddCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddPatient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IBedwetterService/AddPatient" message="tns:IBedwetterService_AddPatient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IBedwetterService/AddPatientResponse" message="tns:IBedwetterService_AddPatient_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IBedwetterService" type="tns:IBedwetterService">
@@ -62,6 +82,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllCustomers">
       <soap:operation soapAction="http://tempuri.org/IBedwetterService/GetAllCustomers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddCustomer">
+      <soap:operation soapAction="http://tempuri.org/IBedwetterService/AddCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddPatient">
+      <soap:operation soapAction="http://tempuri.org/IBedwetterService/AddPatient" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
