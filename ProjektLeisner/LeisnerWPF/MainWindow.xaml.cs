@@ -25,6 +25,7 @@ namespace LeisnerWPF
     public partial class MainWindow : Window
     {
         BedwetterServiceClient client;
+        Customer customer;
 
         public MainWindow()
         {
@@ -32,6 +33,9 @@ namespace LeisnerWPF
 
             client = new BedwetterServiceClient();
 
+            listCustomers.ItemsSource = client.GetAllCustomers();
+
+            gridPatient.Visibility = Visibility.Hidden;
         }
 
         private void btnGetCustomers_Click(object sender, RoutedEventArgs e)
@@ -123,6 +127,31 @@ namespace LeisnerWPF
         private void listToiletVisits_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void btnCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            client.AddCustomer(txtName.Text, txtEmail.Text, int.Parse(txtPhone.Text), int.Parse(txtCustomerNo.Text));
+            listCustomers.ItemsSource = client.GetAllCustomers();
+        }
+
+        private void btnPatient_Click(object sender, RoutedEventArgs e)
+        {
+            int index = listCustomers.SelectedIndex;
+            client.AddPatient(txtPatientName.Text, int.Parse(txtPatientAge.Text), listCustomers.SelectedItem as Customer);
+            listCustomers.ItemsSource = client.GetAllCustomers();
+            listCustomers.SelectedIndex = index;
+        }
+
+        private void listCustomers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (listCustomers.SelectedItem != null)
+            {
+                customer = listCustomers.SelectedItem as Customer;
+
+                listPatients.ItemsSource = customer.Patients;
+                gridPatient.Visibility = Visibility.Visible;
+            }
         }
 
 
