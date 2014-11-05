@@ -68,13 +68,21 @@ namespace LeisnerWPF
                 MarkerStroke = OxyColors.Red,
                 Color = OxyColors.Red,
                 StrokeThickness = 1,
-                MarkerType = MarkerType.Star,
+                MarkerType = MarkerType.Diamond,
             };
             LineSeries toiletVisitSeries = new LineSeries
             {
                 MarkerSize = 3,
                 MarkerStroke = OxyColors.Green,
                 Color = OxyColors.Green,
+                StrokeThickness = 1,
+                MarkerType = MarkerType.Diamond,
+            };
+            LineSeries motivationSeries = new LineSeries
+            {
+                MarkerSize = 3,
+                MarkerStroke = OxyColors.Blue,
+                Color = OxyColors.Blue,
                 StrokeThickness = 1,
                 MarkerType = MarkerType.Star,
             };
@@ -85,6 +93,7 @@ namespace LeisnerWPF
                 double datePoint = DateTimeAxis.ToDouble(questionnaire.Date);
                 wetBedSeries.Points.Add(new DataPoint(datePoint, questionnaire.WetBeds.Count));
                 toiletVisitSeries.Points.Add(new DataPoint(datePoint, questionnaire.ToiletVisits.Count));
+                motivationSeries.Points.Add(new DataPoint(datePoint, questionnaire.Motivation));
             }
 
             PlotModel peeTrendPlotModel = new PlotModel {Title = "Tissetrends"};
@@ -94,6 +103,7 @@ namespace LeisnerWPF
             peeTrendPlotModel.Axes.Add(valueAxis);
             peeTrendPlotModel.Series.Add(wetBedSeries);
             peeTrendPlotModel.Series.Add(toiletVisitSeries);
+            peeTrendPlotModel.Series.Add(motivationSeries);
 
             peeTrendPlotView.Model = peeTrendPlotModel;
         }
