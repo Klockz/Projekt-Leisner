@@ -10,6 +10,10 @@ using LeisnerWCF.DataAccess;
 
 namespace LeisnerWCF
 {
+    /***********************************
+     * NOTE: Run the script in LeisnerSysGruppe01\Database\LeisnerDB.sql to create database
+     * and insert test data
+     ***********************************/
     public class BedwetterService : IBedwetterService
     {
         CustomerRepository customerRepo 
